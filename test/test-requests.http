@@ -1,0 +1,8 @@
+# Testing http requests with Visual Studio Code REST Client extension
+
+###########################
+## Users resource endpoints
+
+### get all users (requires admin token)
+GET http://localhost:3000/api/users
+Authorization: Bearer <ADMIN_TOKEN_HERE>
