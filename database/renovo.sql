@@ -1,5 +1,3 @@
---HUOM! kesken ja pahasti!!!
-
 -- Drop the database if it exists and then create it
 DROP DATABASE IF EXISTS Renovo;
 CREATE DATABASE Renovo;
@@ -32,9 +30,10 @@ CREATE TABLE Disagreement (
 CREATE TABLE Shift (
     shift_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    shift_date DATE NOT NULL,
-    start_shift
-    end_shift
+    start_date DATE NULL,
+    start_time TIME NULL,
+    end_time TIME NULL,
+    end_date DATE NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
@@ -42,7 +41,11 @@ CREATE TABLE Shift (
 CREATE TABLE Exercise (
     Exercise_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    intensity ENUM('Low', 'Medium', 'High') NOT NULL,
+    exercise_date DATE NOT NULL,
+    exercise_type VARCHAR(50) NOT NULL,
+    start_time TIME NOT NULL,
+    end_time TIME NOT NULL,
+    level ENUM('Low', 'Medium', 'High') NOT NULL,
     notes TEXT,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
@@ -51,7 +54,9 @@ CREATE TABLE Exercise (
 CREATE TABLE Sickness (
     Sickness_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    intensity ENUM('Low', 'Medium', 'High') NOT NULL,
+    sickness_date DATE NOT NULL,
+    description VARCHAR(50) NOT NULL,
+    impact ENUM('Low', 'Medium', 'High') NOT NULL,
     notes TEXT,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
@@ -60,6 +65,8 @@ CREATE TABLE Sickness (
 CREATE TABLE Others (
     Others_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
+    others_date DATE NOT NULL,
+    description VARCHAR(50) NOT NULL,
     intensity ENUM('Low', 'Medium', 'High') NOT NULL,
     notes TEXT,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
