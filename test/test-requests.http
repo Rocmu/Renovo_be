@@ -6,3 +6,22 @@
 ### get all users (requires admin token)
 GET http://localhost:3000/api/users
 Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+###########################
+## Auth resource endpoints
+
+### Login to Kubios,
+### !!!!!!!! ÄLKÄÄ KOSKAAN ADD, COMMIT OR PUSH TEIDÄN OIKEITA USERNAME TAI PASSWORD !!!!!!
+### !!!!!!!! MAKE SURE TO NEVER ADD, COMMIT OR PUSH YOUR ACTUAL USERNAME OR PASSWORD !!!!!!
+### Kun testit on tehty, palauttakaa joko tohon alkuperäiseen muotoon, tai jätätte vaan esim. "username": "" ja "password":""
+### Once you're done testing, either return format to its original, or just leave it at fe. "username": "" and "password":""
+### Samat säännöt koskee kaikkia tälläisiä testipyyntöjä ja muita salaisia tietoja!
+### Same rules apply to similar test API- requests and other sensitive information!
+
+POST http://localhost:3000/api/auth/kubios-login
+content-type: application/json
+
+{
+    "username":"insert_your_username",
+    "password":"insert_your_password"
+}
