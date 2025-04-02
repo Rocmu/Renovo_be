@@ -16,7 +16,7 @@ const listAllShifts = async () => {
 };
 
 /**
- * Retrieves shifts by user ID.
+ * Retrieves all users shifts by user ID.
  * @param {number} id - User ID.
  * @returns {Promise<Array<Object>|{error: number, message: string}>} Array of shifts or error object.
  */
@@ -33,7 +33,7 @@ const listShiftsByUserId = async (id) => {
 };
 
 /**
- * Retrieve single shift by ID.
+ * Retrieve shift by ID.
  * @param {number} id - Shift ID.
  * @returns {Promise<Object|{error: number, message: string}>} Shift object or error object (404 if not found).
  */
@@ -55,7 +55,7 @@ const selectShiftById = async (id) => {
 };
 
 /**
- * Creates a new shift in the database.
+ * Create new shift in the database.
  * @param {Object} shift - Shift object containing required fields.
  * @param {number} shift.user_id - User ID.
  * @param {string|null} shift.start_date - Shift start date (YYYY-MM-DD).

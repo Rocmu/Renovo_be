@@ -30,7 +30,7 @@ const getShifts = async (req, res, next) => {
 };
 
 /**
- * Get shifts by user ID.
+ * Get all users shifts by user ID.
  * @param {Object} req - Express request object (contains params.id).
  * @param {Object} res - Express response object.
  * @param {Function} next - Next middleware function.
@@ -51,7 +51,7 @@ const getShiftsByUserId = async (req, res, next) => {
 };
 
 /**
- * Gets a single shift by ID.
+ * Get shift by ID.
  * @param {Object} req - Express request object (contains params.id).
  * @param {Object} res - Express response object.
  * @param {Function} next - Next middleware function.
