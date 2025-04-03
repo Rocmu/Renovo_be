@@ -95,14 +95,14 @@ const insertShift = async (shift) => {
  */
 const updateShiftById = async (shift) => {
   try {
-    const sql = 'UPDATE Shift SET user_id=?, start_date=?, start_time=?, end_time=?, end_date=? WHERE shift_id=?';
+    const sql = 'UPDATE Shift SET start_date=?, start_time=?, end_time=?, end_date=? WHERE shift_id=? AND user_id=?';
     const params = [
-      shift.user_id,
       shift.start_date,
       shift.start_time,
       shift.end_time,
       shift.end_date,
       shift.shift_id,
+      shift.user_id
     ];
     const [result] = await promisePool.query(sql, params);
 
