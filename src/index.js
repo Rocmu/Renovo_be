@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import authRouter from './routes/auth-router.js';
 import shiftRouter from './routes/shift-router.js';
+import kubiosRouter from './routes/kubios-router.js';
 
 const hostname = '127.0.0.1';
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use('/api/auth', authRouter);
 app.use('/api/shifts', shiftRouter);
+app.use('/api/kubios', kubiosRouter);
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
