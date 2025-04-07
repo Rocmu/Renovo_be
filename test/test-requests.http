@@ -82,3 +82,205 @@ Authorization: Bearer <ADMIN_TOKEN_HERE>
 ### KUBIOS MEASUREMENTS AND RESULTS (PREV 30 DAYS)
 GET http://localhost:3000/api/kubios/user-data-thirty
 Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+###########################
+## Disagreement data resource endpoints
+
+### Get all disagreement entries
+
+GET http://localhost:3000/api/disagreement/
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+### Create a new disagreement for user
+
+POST http://localhost:3000/api/disagreement/
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+content-type: application/json
+
+{
+    "user_id": "<user_id>",
+    "notes": "Luodaan disagreement merkintä."
+}
+
+### Get all disagreementa based on user_id
+
+GET http://localhost:3000/api/disagreement/user/<user_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+### Get a disagreement based on disagreement_id
+
+GET http://localhost:3000/api/disagreement/<disagreement_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+### Update a disagreement for user based on disagreement_id
+
+PUT http://localhost:3000/api/disagreement/<disagreement_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+content-type: application/json
+
+{
+    "user_id": "<user_id>",
+    "notes": "Muokataan disagreement merkintä."
+}
+
+### Delete a disagreement for user based on disagreement_id
+
+DELETE http://localhost:3000/api/disagreement/<disagreement_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+###########################
+## Exercise data resource endpoints
+
+### Get all exercise entries
+
+GET http://localhost:3000/api/exercise
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+### Create a new exercise for user
+
+POST http://localhost:3000/api/exercise
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+content-type: application/json
+
+{
+    "user_id":"<user_id>",
+    "exercise_date":"2025-04-21",
+    "exercise_type": "Badminton",
+    "start_time": "15:30",
+    "end_time": "16:30",
+    "level": "High",
+    "notes": "Tehty kunnon treeni."
+}
+
+### Get all exercises based on user_id
+
+GET http://localhost:3000/api/exercise/user/<user_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+### Get a exercises based on exercise_id
+
+GET http://localhost:3000/api/exercise/<exercise_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+### Update an exercise based on exercise_id
+
+PUT http://localhost:3000/api/exercise/<exercise_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+content-type: application/json
+
+{
+    "user_id":"<user_id>",
+    "exercise_date":"2025-04-22",
+    "exercise_type": "Badminton",
+    "start_time": "18:30",
+    "end_time": "19:30",
+    "level": "High",
+    "notes": "Tehty kunnon treeni."
+}
+
+### Delete an exercise based on exercise_id
+
+DELETE http://localhost:3000/api/exercise/<exercise_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+###########################
+## Sickness data resource endpoints
+
+### Get all sickness entries
+
+GET http://localhost:3000/api/sickness
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+### Create a new sickness entry for user
+
+POST http://localhost:3000/api/sickness
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+content-type: application/json
+
+{
+    "user_id":"<user_id>",
+    "sickness_date":"2025-04-30",
+    "description": "Tauti menossa ohi.",
+    "impact": "Low",
+    "notes": "Jääty pois töistä."
+}
+
+### Get all sickness entries based on user_id
+
+GET http://localhost:3000/api/sickness/user/<user_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+### Get a sickness entry based on sickness_id
+
+GET http://localhost:3000/api/sickness/<sickness_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+### Update a sickness entry based on sickness_id
+
+PUT http://localhost:3000/api/sickness/<sickness_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+content-type: application/json
+
+{
+    "user_id":"<user_id>",
+    "sickness_date":"2025-04-29",
+    "description": "Korkea nousi taas.",
+    "impact": "High",
+    "notes": "Jääty pois töistä. Jäädään huomenna vielä kotiin."
+}
+
+### Delete a sickness entry based on sickness_id
+
+DELETE http://localhost:3000/api/sickness/<sickness_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+###########################
+## Other data resource endpoints
+
+### Get all other entries
+
+GET http://localhost:3000/api/others
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+### Create a new others entry for user
+
+POST http://localhost:3000/api/others
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+content-type: application/json
+
+{
+    "user_id":"<user_id>",
+    "others_date":"2025-05-01",
+    "description": "Ahdistuskohtaus.",
+    "intensity": "Medium",
+    "notes": "Menty töihin."
+}
+
+### Get all others entries based on user_id
+
+GET http://localhost:3000/api/others/user/<user_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+### Get an others entry based on Others_id
+
+GET http://localhost:3000/api/others/<Others_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+### Update an others entry based on Others_id
+
+PUT http://localhost:3000/api/others/<Others_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+content-type: application/json
+
+{
+    "user_id":"<user_id>",
+    "others_date":"2025-05-01",
+    "description": "Ahdistuskohtaus.",
+    "intensity": "High",
+    "notes": "Menty töihin. Lähdetty kesken päivän."
+}
+
+### Delete an others entry based on Others_id
+
+DELETE http://localhost:3000/api/others/<Others_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
