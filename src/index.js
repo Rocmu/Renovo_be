@@ -6,6 +6,7 @@ import disagreementRouter from './routes/disagreement-router.js';
 import exerciseRouter from './routes/exercise-router.js';
 import sicknessRouter from './routes/sickness-router.js';
 import othersRouter from './routes/others-router.js';
+import kubiosRouter from './routes/kubios-router.js';
 
 const hostname = '127.0.0.1';
 const app = express();
@@ -23,6 +24,7 @@ app.use('/api/disagreement', disagreementRouter);
 app.use('/api/exercise', exerciseRouter);
 app.use('/api/sickness', sicknessRouter);
 app.use('/api/others', othersRouter);
+app.use('/api/kubios', kubiosRouter);
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

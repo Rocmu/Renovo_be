@@ -72,3 +72,13 @@ Authorization: Bearer <ADMIN_TOKEN_HERE>
 DELETE http://localhost:3000/api/shifts/<shift_id>
 Authorization: Bearer <ADMIN_TOKEN_HERE>
 
+###########################
+## Kubios data resource endpoints
+
+### KUBIOS MEASUREMENTS AND RESULTS (PREV 10 DAYS)
+GET http://localhost:3000/api/kubios/user-data-ten
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
+### KUBIOS MEASUREMENTS AND RESULTS (PREV 30 DAYS)
+GET http://localhost:3000/api/kubios/user-data-thirty
+Authorization: Bearer <ADMIN_TOKEN_HERE>
