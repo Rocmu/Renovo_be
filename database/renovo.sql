@@ -15,6 +15,11 @@ CREATE TABLE Users (
 CREATE TABLE Kubios (
     kubios_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
+    result_date DATE NULL,
+    readiness INT,
+    pns_index DECIMAL(5,2),
+    sns_index DECIMAL(5,2),
+    rmssd INT,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );

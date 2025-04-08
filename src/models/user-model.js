@@ -68,4 +68,22 @@ const selectUserByEmail = async (username) => {
   }
 };
 
-export {selectUserById, insertUser, selectUserByEmail}
+/**
+ * Fetch user by id
+ * @param {number} userId id of the user
+ * @returns {object} user found or undefined if not
+ */
+const selectCreatedAt = async (userId) => {
+  try {
+    const [rows] = await promisePool.query('SELECT created_at from Users where user_id=?',
+      [userId]
+    );
+    console.log(rows);
+    return rows[0];
+  } catch(error) {
+    console.log(error);
+    throw new Error('database error');
+  }
+};
+
+export {selectUserById, insertUser, selectUserByEmail, selectCreatedAt};

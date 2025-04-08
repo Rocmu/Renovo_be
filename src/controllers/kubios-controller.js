@@ -77,22 +77,22 @@ const getTenDays = print.slice(0, 11)
     let pnsArray = []
     let snsArray = []
     let rmssdArray = []
-    //let created = []
+    let result_dateArray = []
 
     for (let i = 0; i < results.results.length; i++) {
       readinessArray.push(results.results[i].result.readiness)
       pnsArray.push(results.results[i].result.pns_index)
       snsArray.push(results.results[i].result.sns_index)
       rmssdArray.push(results.results[i].result.rmssd_ms)
-      //created.push(results.results[i].create_timestamp)
+      result_dateArray.push(results.results[i].daily_result)
     };
     //return res.json(results);
     return res.status(200).json({
+      daily_result: result_dateArray,
       readiness: readinessArray,
       pns: pnsArray,
       sns: snsArray,
-      rmssd: rmssdArray,
-      //ajat-tarkistus: created
+      rmssd: rmssdArray
       });
 
   } catch (error){
@@ -164,22 +164,22 @@ const getDataThirty = async (req, res, next) => {
     let pnsArray = []
     let snsArray = []
     let rmssdArray = []
-    //let created = []
+    let result_dateArray = []
 
     for (let i = 0; i < results.results.length; i++) {
       readinessArray.push(results.results[i].result.readiness)
       pnsArray.push(results.results[i].result.pns_index)
       snsArray.push(results.results[i].result.sns_index)
       rmssdArray.push(results.results[i].result.rmssd_ms)
-      //created.push(results.results[i].create_timestamp)
+      result_dateArray.push(results.results[i].daily_result)
     };
     //return res.json(results);
     return res.status(200).json({
+      daily_result: result_dateArray,
       readiness: readinessArray,
       pns: pnsArray,
       sns: snsArray,
-      rmssd: rmssdArray,
-      //ajat-tarkistus: created
+      rmssd: rmssdArray
       });
 
   } catch (error){

@@ -83,6 +83,10 @@ Authorization: Bearer <ADMIN_TOKEN_HERE>
 GET http://localhost:3000/api/kubios/user-data-thirty
 Authorization: Bearer <ADMIN_TOKEN_HERE>
 
+### SAVE ALL KUBIOS DATA, OBSERVATIONAL PERIOD STATUS
+GET http://localhost:3000/api/kubios/<user_id>
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
 ###########################
 ## Disagreement data resource endpoints
 
