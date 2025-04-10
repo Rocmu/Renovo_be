@@ -2,8 +2,7 @@ import 'dotenv/config';
 import fetch from 'node-fetch';
 import { checkKubios, createKubiosEntry } from '../models/kubios-model.js';
 import { selectCreatedAt } from '../models/user-model.js';
-
-// import {customError} from '../middlewares/error-handler.js';
+import {customError} from '../middlewares/error-handler.js';
 
 // Kubios API base URL should be set in .env
 const baseUrl = process.env.KUBIOS_API_URI;
@@ -76,7 +75,8 @@ const getUserData = async (req, res, next) => {
             }
           );
         } catch(error) {
-          next(error)
+          console.log('Request error', error)
+          return next(customError('Kubios fetch failed.', 400));
         }
       }
       //JOS PÄIVÄT OVAT ALLE 30
@@ -87,7 +87,8 @@ const getUserData = async (req, res, next) => {
         }
       );
     } catch (error){
-      next(error)
+      console.log('Request error', error)
+      return next(customError('User not found.', 404));
     }
   } else {
     //TAULUKKO EI OLE TYHJÄ JA LOPULLINEN TALLENNUS ON JO TEHTY
