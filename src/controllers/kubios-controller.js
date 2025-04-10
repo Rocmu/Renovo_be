@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import fetch from 'node-fetch';
-
-// import {customError} from '../middlewares/error-handler.js';
+import {customError} from '../middlewares/error-handler.js';
 
 // Kubios API base URL should be set in .env
 const baseUrl = process.env.KUBIOS_API_URI;
@@ -69,7 +68,14 @@ const getTenDays = print.slice(0, 11)
         headers: headers,
       },
     );
+
     const results = await response.json();
+
+    if (results.error) {
+      const error = new Error(response.message);
+      error.status = response.error;
+      return next(error);
+    }
 
     console.log(results.results)
 
@@ -86,7 +92,6 @@ const getTenDays = print.slice(0, 11)
       rmssdArray.push(results.results[i].result.rmssd_ms)
       result_dateArray.push(results.results[i].daily_result)
     };
-    //return res.json(results);
     return res.status(200).json({
       daily_result: result_dateArray,
       readiness: readinessArray,
@@ -95,8 +100,9 @@ const getTenDays = print.slice(0, 11)
       rmssd: rmssdArray
       });
 
-  } catch (error){
-    next(error)
+  } catch (error) {
+    console.log('Request error', error);
+    return next(customError('Kubios fetch failed.', 400));
   }
 };
 
@@ -156,7 +162,14 @@ const getDataThirty = async (req, res, next) => {
         headers: headers,
       },
     );
+
     const results = await response.json();
+
+    if (results.error) {
+      const error = new Error(response.message);
+      error.status = response.error;
+      return next(error);
+    }
 
     console.log(results.results)
 
@@ -173,7 +186,6 @@ const getDataThirty = async (req, res, next) => {
       rmssdArray.push(results.results[i].result.rmssd_ms)
       result_dateArray.push(results.results[i].daily_result)
     };
-    //return res.json(results);
     return res.status(200).json({
       daily_result: result_dateArray,
       readiness: readinessArray,
@@ -183,7 +195,8 @@ const getDataThirty = async (req, res, next) => {
       });
 
   } catch (error){
-    next(error)
+      console.log('Request error', error);
+      return next(customError('Kubios fetch failed.', 400));
   }
 };
 

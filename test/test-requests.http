@@ -26,8 +26,17 @@ content-type: application/json
     "password":"insert_your_password"
 }
 
+### Get me
+GET http://localhost:3000/api/auth/me
+Authorization: Bearer <ADMIN_TOKEN_HERE>
+
 ###########################
 ## Shift resource endpoints
+
+### Get all shits
+
+GET http://localhost:3000/api/shifts
+Authorization: Bearer <ADMIN_TOKEN_HERE>
 
 ### Create a new shift for user
 
@@ -203,7 +212,7 @@ content-type: application/json
 
 {
     "user_id":"<user_id>",
-    "sickness_date":"2025-04-30",
+    "sickness_date":"2025-04-18",
     "description": "Tauti menossa ohi.",
     "impact": "Low",
     "notes": "Jääty pois töistä."
@@ -227,7 +236,7 @@ content-type: application/json
 
 {
     "user_id":"<user_id>",
-    "sickness_date":"2025-04-29",
+    "sickness_date":"",
     "description": "Korkea nousi taas.",
     "impact": "High",
     "notes": "Jääty pois töistä. Jäädään huomenna vielä kotiin."
