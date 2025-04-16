@@ -2,8 +2,6 @@
 
 ## Backendin pystytys
 
-navigoi kansioon cd backend
-
 asennetaan paketit npm i
 
 ajetaan node-projekti npm run dev
@@ -26,3 +24,7 @@ ajetaan node-projekti npm run dev
 HUOM!!!!!!!! Älä IKINÄ add, commit tai push omia käyttäjätietoja (käyttäjänimi ja/tai salasana). Testien jälkeen joko palautat tiedoston sen alkuperäiseen muotoon, tai jätä täytettävät kohdat tyhjäksi, mutta omia tietoja ei ikinä Gittiin tai Githubiin.
 
 7. Kun olet täyttänyt kohdat test-request.http tiedostossa, Paina --> Send request
+
+## Dokumentaatio
+
+npm install apidoc
