@@ -11,7 +11,6 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
  * @apiSuccess {Object} exercise User's exercise entries' values listed
  * @apiSuccess {Number} exercise.Exercise_id Id of the exercise entry.
  * @apiSuccess {String} exercise.user_id User's unique ID.
@@ -38,8 +37,8 @@
  *       "end_time": "16:30:00",
  *       "level": "High",
  *       "notes": "Treenataan kunnolla, kun kisat ensi viikolla.",
- *		 "created_at": "2025-04-29T16:22:24.000Z"
- *      }
+ *	     "created_at": "2025-04-29T16:22:24.000Z"
+ *     }
  *
  *     ...
  *
@@ -59,7 +58,6 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
  * @apiBody {Object} exercise User's exercise entry values.
  * @apiBody {Number} exercise.user_id User id
  * @apiBody {String} exercise.exercise_date The date when the user's exercise occurs.
@@ -82,8 +80,8 @@
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 403 Forbidden
  *     {
- *		"message": "jwt malformed",
- *		"status": 403
+ *		    "message": "jwt malformed",
+ *		    "status": 403
  *	   }
  *
 * @apiError InvalidValue Input value was invalid/missing.
@@ -91,14 +89,14 @@
  *     HTTP/1.1 400 Bad Request
  *
  *	   {
- *  	"message": "Bad Request",
- *  	"status": 400,
- *  	"errors": [
- *    		{
- *      		"field": "exercise_date",
- *      		"message": "Invalid value"
- *    		}
- *     	]
+ *  	    "message": "Bad Request",
+ *  	    "status": 400,
+ *  	    "errors": [
+ *    		    {
+ *      		    "field": "exercise_date",
+ *      		    "message": "Invalid value"
+ *    		    }
+ *     	    ]
  *	  }
  */
 
@@ -109,7 +107,7 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
+ * @apiParam {Number} id User's unique ID.
  * @apiSuccess {Object} exercise User's exercise entries' values listed
  * @apiSuccess {Number} exercise.Exercise_id Id of the exercise entry.
  * @apiSuccess {String} exercise.user_id User's unique ID.
@@ -135,7 +133,7 @@
  *       "end_time": "16:30:00",
  *       "level": "High",
  *       "notes": "Treenataan kunnolla, kun kisat ensi viikolla.",
- *		 "created_at": "2025-04-29T16:22:24.000Z"
+ *		   "created_at": "2025-04-29T16:22:24.000Z"
  *      }
  *
  *     ...
@@ -144,8 +142,8 @@
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 403 Forbidden
  *     {
- *       "message": "jwt malformed",
- *       "status": 403
+ *        "message": "jwt malformed",
+ *        "status": 403
  *     }
  */
 
@@ -156,7 +154,7 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
+ * @apiParam {Number} id Exercise entry's unique token.
  * @apiSuccess {Object} exercise User's exercise entries' values listed
  * @apiSuccess {Number} exercise.Exercise_id Id of the exercise entry.
  * @apiSuccess {String} exercise.user_id User's unique ID.
@@ -180,23 +178,23 @@
  *       "end_time": "16:30:00",
  *       "level": "High",
  *       "notes": "Treenataan kunnolla, kun kisat ensi viikolla.",
- *		 "created_at": "2025-04-29T16:22:24.000Z"
+ *		   "created_at": "2025-04-29T16:22:24.000Z"
  *      }
  *
  * @apiError InvalidValue Input value was invalid/missing.
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "message": "Exercise not found",
- *       "status": 404,
+ *        "message": "Exercise not found",
+ *        "status": 404,
  *     }
  *
  * @apiError InvalidToken Authentication token was invalid.
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 403 Forbidden
  *     {
- *       "message": "jwt malformed",
- *       "status": 403
+ *        "message": "jwt malformed",
+ *        "status": 403
  *     }
  */
 
@@ -207,7 +205,7 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
+ * @apiParam {Number} id Users unique ID.
  * @apiBody {Object} exercise User's exercise entry values.
  * @apiBody {Number} exercise.user_id User id
  * @apiBody {String} exercise.exercise_date The date when the user's exercise occurs.
@@ -222,22 +220,22 @@
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "message": "Exercise updated",
- *       "exercise_id": "1",
+ *        "message": "Exercise updated",
+ *        "exercise_id": "1",
  *      }
  *
  * @apiError InvalidValue Input value was invalid/missing.
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 400 Bad Request
  *     {
- *       "message": "Bad Request",
- *       "status": 400,
- *       "error": [
- *          {
- *            "field": "exercise_date",
- *            "message": "Invalid value"
- *          }
- *       ]
+ *        "message": "Bad Request",
+ *        "status": 400,
+ *        "error": [
+ *           {
+ *             "field": "exercise_date",
+ *             "message": "Invalid value"
+ *           }
+ *        ]
  *     }
  * @apiError InvalidToken Authentication token was invalid.
  * @apiErrorExample Error-Response:
@@ -264,7 +262,7 @@
  *     {
  *       "message": "Exercise deleted",
  *       "exercise_id": "1",
- *      }
+ *     }
  *
  * @apiError InvalidValue Input value was invalid/missing.
  * @apiErrorExample Error-Response:

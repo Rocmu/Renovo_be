@@ -11,7 +11,6 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
  * @apiSuccess {Object} sickness User's ilness entries' values listed
  * @apiSuccess {Number} sickness.Sickness_id Id of the sickness entry.
  * @apiSuccess {String} sickness.user_id User's unique ID.
@@ -34,7 +33,7 @@
  *       "description": "Kova kuume.",
  *       "impact": "High",
  *       "notes": "Jääty pois töistä.",
- *		 "created_at": "2025-04-29T07:01:04.000Z"
+ *		   "created_at": "2025-04-29T07:01:04.000Z"
  *      }
  *
  *     ...
@@ -43,8 +42,8 @@
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 403 Forbidden
  *     {
- *		"message": "jvt malformed",
- *		"status": 403
+ *		    "message": "jvt malformed",
+ *		    "status": 403
  *	   }
  */
 
@@ -55,7 +54,6 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
  * @apiBody {Object} sickness User's sickness entry values.
  * @apiBody {Number} sickness.user_id User id
  * @apiBody {String} sickness.sickness_date The date when the user's illness begins.
@@ -68,16 +66,16 @@
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 201 Created
  *     {
- *		 "message": "New sickness record created",
- *		 "sickness_id": 1
+ *		    "message": "New sickness record created",
+ *		    "sickness_id": 1
  *	   }
  *
  * @apiError InvalidToken Authentication token was invalid.
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 403 Forbidden
  *     {
- *		"message": "jwt malformed",
- *		"status": 403
+ *		    "message": "jwt malformed",
+ *		    "status": 403
  *	   }
  *
 * @apiError InvalidValue Input value was invalid/missing.
@@ -85,15 +83,15 @@
  *     HTTP/1.1 400 Bad Request
  *
  *	   {
- *  	"message": "Bad Request",
- *  	"status": 400,
- *  	"errors": [
- *    		{
- *      		"field": "sickness_date",
- *      		"message": "Invalid value"
- *    		}
- *     	]
- *	  }
+ *  	    "message": "Bad Request",
+ *  	    "status": 400,
+ *  	    "errors": [
+ *    		    {
+ *      		    "field": "sickness_date",
+ *      		    "message": "Invalid value"
+ *    		    }
+ *     	    ]
+ *	   }
  */
 
  /**
@@ -125,7 +123,7 @@
  *       "description": "Kova kuume.",
  *       "impact": "High",
  *       "notes": "Jääty pois töistä.",
- *		 "created_at": "2025-04-29T07:01:04.000Z"
+ *		   "created_at": "2025-04-29T07:01:04.000Z"
  *      }
  *
  *     ...
@@ -166,7 +164,7 @@
  *       "description": "Kova kuume.",
  *       "impact": "High",
  *       "notes": "Jääty pois töistä.",
- *		 "created_at": "2025-04-29T07:01:04.000Z"
+ *		   "created_at": "2025-04-29T07:01:04.000Z"
  *      }
  *
  * @apiError InvalidValue Input value was invalid/missing.

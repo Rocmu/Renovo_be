@@ -11,7 +11,6 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
  * @apiSuccess {Object} disagreement User's disagreement entries' values listed
  * @apiSuccess {Number} disagreement.disagreement_id Id of the disagreement entry.
  * @apiSuccess {String} disagreement.user_id User's unique ID.
@@ -48,7 +47,6 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
  * @apiBody {Object} disagreement User's disagreement entry values.
  * @apiBody {Number} disagreement.user_id User id
  * @apiBody {String} disagreement.notes Additional information.

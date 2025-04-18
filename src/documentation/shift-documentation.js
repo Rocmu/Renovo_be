@@ -11,7 +11,6 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
  * @apiSuccess {Object} shift User's shift values listed
  * @apiSuccess {Number} shift.shift_id Id of the shift entry.
  * @apiSuccess {String} shift.user_id User's unique ID.
@@ -34,8 +33,8 @@
  *       "start_time": "19:30:00",
  *       "end_time": "03:30:00",
  *       "end_date": "2025-04-18T21:00:00.000Z",
- *		 "created_at": "2025-04-10T05:59:16.000Z"
- *      }
+ *	  "created_at": "2025-04-10T05:59:16.000Z"
+ *     }
  *
  *     ...
  *
@@ -43,8 +42,8 @@
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 403 Forbidden
  *     {
- *		"message": "invalid token",
- *		"status": 403
+ *		    "message": "invalid token",
+ *		    "status": 403
  *	   }
  */
 
@@ -55,7 +54,6 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
  * @apiBody {Object} shift User's shift values.
  * @apiBody {Number} shift.user_id User id
  * @apiBody {String} shift.start_date The date when the user's shift begins.
@@ -68,16 +66,16 @@
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 201 Created
  *     {
- *		 "message": "New shift created",
- *		 "shift_id": 1
+ *		    "message": "New shift created",
+ *		    "shift_id": 1
  *	   }
  *
  * @apiError InvalidToken Authentication token was invalid.
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 403 Forbidden
  *     {
- *		"message": "jwt malformed",
- *		"status": 403
+ *		    "message": "jwt malformed",
+ *		    "status": 403
  *	   }
  *
 * @apiError InvalidValue Input value was invalid/missing.
@@ -85,15 +83,15 @@
  *     HTTP/1.1 400 Bad Request
  *
  *	   {
- *  	"message": "Bad Request",
- *  	"status": 400,
- *  	"errors": [
- *    		{
- *      		"field": "start_date",
- *      		"message": "Invalid value"
- *    		}
- *     	]
- *	  }
+ *  	    "message": "Bad Request",
+ *  	    "status": 400,
+ *  	    "errors": [
+ *    		    {
+ *      		    "field": "start_date",
+ *      		    "message": "Invalid value"
+ *    		    }
+ *     	    ]
+ *	   }
  */
 
  /**
@@ -125,8 +123,8 @@
  *       "start_time": "19:30:00",
  *       "end_time": "03:30:00",
  *       "end_date": "2025-04-18T21:00:00.000Z",
- *		 "created_at": "2025-04-10T05:59:16.000Z"
- *      }
+ *	  "created_at": "2025-04-10T05:59:16.000Z"
+ *     }
  *
  *     ...
  *
@@ -166,8 +164,8 @@
  *       "start_time": "19:30:00",
  *       "end_time": "03:30:00",
  *       "end_date": "2025-04-17T21:00:00.000Z",
- *		 "created_at": "2025-04-10T05:59:16.000Z"
- *      }
+ *	  "created_at": "2025-04-10T05:59:16.000Z"
+ *     }
  *
  * @apiError InvalidValue Input value was invalid/missing.
  * @apiErrorExample Error-Response:

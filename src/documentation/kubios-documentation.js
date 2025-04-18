@@ -10,7 +10,6 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
  * @apiSuccess {Object} results User's requested data listed.
  * @apiSuccess {String} results.daily_result Dates of the requested results.
  * @apiSuccess {Number} results.readiness Readiness values of the requested results.
@@ -50,7 +49,6 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
  * @apiSuccess {Object} results User's requested data listed.
  * @apiSuccess {String} results.daily_result Dates of the requested results.
  * @apiSuccess {Number} results.readiness Readiness values of the requested results.
@@ -95,7 +93,6 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
  * @apiParam {Number} id User's unique ID.
  *
  * @apiSuccess {String} message Message regarding whether the user's observation period is still active.

@@ -11,7 +11,6 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
  * @apiSuccess {Object} others User's others entries' values listed
  * @apiSuccess {Number} others.Others_id Id of the others entry.
  * @apiSuccess {String} others.user_id User's unique ID.
@@ -55,7 +54,6 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
  * @apiBody {Object} others User's others entry values.
  * @apiBody {Number} others.user_id User id
  * @apiBody {String} others.others_date The date when an event that doesn't fit other entry types occurs.
@@ -103,7 +101,7 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
+ * @apiParam {Number} id Users unique ID.
  * @apiSuccess {Object} others User's others entries' values listed
  * @apiSuccess {Number} others.Others_id Id of the others entry.
  * @apiSuccess {String} others.user_id User's unique ID.
@@ -146,7 +144,7 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
+ * @apiParam {Number} id Others entry's unique id.
  * @apiSuccess {Object} others User's others entries' values listed
  * @apiSuccess {Number} others.Others_id Id of the others entry.
  * @apiSuccess {String} others.user_id User's unique ID.
@@ -193,7 +191,7 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {String} token Users unique token.
+ * @apiParam {Number} id Others entry's unique id.
  * @apiBody {Object} others User's others entry values.
  * @apiBody {Number} others.user_id User id
  * @apiBody {String} others.others_date The date when an event that doesn't fit other entry types occurs.
