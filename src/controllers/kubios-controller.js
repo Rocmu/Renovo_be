@@ -5,6 +5,51 @@ import {customError} from '../middlewares/error-handler.js';
 // Kubios API base URL should be set in .env
 const baseUrl = process.env.KUBIOS_API_URI;
 
+function setDate(days) {
+
+    const date = new Date();
+    console.log('')
+    console.log('alkuperäinen päivä ' + date)
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    //const current_month = month + 1
+    const day = date.getDate();
+
+    const difference = day - days
+
+    //JOS difference ON NEGATIIVINEN
+    if (difference < 1) {
+        //PALATAANKO VIIME VUODELLE?
+        // JOS KYLLÄ
+        if (month == 0) {
+            //Edellinen vuosi, joulukuu, 10 tai 30 päivää sitten
+            console.log('Palataan edelliseen vuoteen')
+            date.setFullYear(year-1)
+            date.setMonth(12)
+            date.setDate(day-days)
+        // JOS EI
+        } else {
+            //Nykyinen vuosi, edellinen kuukausi, 10 tai 30 päivää sitten
+            console.log('Palataan edelliseen kuukauteen')
+            date.setFullYear(year)
+            date.setMonth(month)
+            date.setDate(day-days)
+        }
+    //JOS difference ON POSITIIVINEN
+    } else {
+        //Nykyinen vuosi, nykyinen kuukausi, 10 tai 30 päivää sitten
+        console.log('Pysytään tässä kuukaudessa')
+        date.setFullYear(year)
+        date.setMonth(month)
+        date.setDate(day-days)
+    };
+
+    console.log('Uusi: ' + date)
+    const print = date.toISOString();
+    const getDays = print.slice(0, 11)
+    return getDays;
+};
+
 /**
 * Get user data from Kubios API example
 * TODO: Implement error handling
@@ -19,50 +64,11 @@ const getDataTen = async (req, res, next) => {
   headers.append('User-Agent', process.env.KUBIOS_USER_AGENT);
   headers.append('Authorization', kubiosIdToken);
 
-const date = new Date();
-console.log('')
-console.log('alkuperäinen päivä ' + date)
-const year = date.getFullYear();
-const month = date.getMonth();
-//const current_month = month + 1
-const day = date.getDate();
-
-const difference = day - 10
-
-//JOS difference ON NEGATIIVINEN
-if (difference < 1) {
-    //PALATAANKO VIIME VUODELLE?
-    // JOS KYLLÄ
-    if (month == 0) {
-        //Edellinen vuosi, joulukuu, 10 päivää sitten
-        console.log('Palataan edelliseen vuoteen')
-        date.setFullYear(year-1)
-        date.setMonth(12)
-        date.setDate(day-10)
-    // JOS EI
-    } else {
-        //Nykyinen vuosi, edellinen kuukausi, 10 päivää sitten
-        console.log('Palataan edelliseen kuukauteen')
-        date.setFullYear(year)
-        date.setMonth(month)
-        date.setDate(day-10)
-    }
-//JOS difference ON POSITIIVINEN
-} else {
-    //Nykyinen vuosi, nykyinen kuukausi, 10 päivää sitten
-    console.log('Pysytään tässä kuukaudessa')
-    date.setFullYear(year)
-    date.setMonth(month)
-    date.setDate(day-10)
-}
-
-console.log('Uusi: ' + date)
-const print = date.toISOString();
-const getTenDays = print.slice(0, 11)
+  const getMeasurements = setDate(10);
 
   try {
     const response = await fetch(
-      baseUrl + `/result/self?from=${getTenDays}00%3A00%3A00%2B00%3A00`,
+      baseUrl + `/result/self?from=${getMeasurements}00%3A00%3A00%2B00%3A00`,
       {
         method: 'GET',
         headers: headers,
@@ -112,51 +118,11 @@ const getDataThirty = async (req, res, next) => {
   headers.append('User-Agent', process.env.KUBIOS_USER_AGENT);
   headers.append('Authorization', kubiosIdToken);
 
-  const date = new Date();
-  console.log('')
-  console.log('alkuperäinen päivä ' + date)
-
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  //const current_month = month + 1
-  const day = date.getDate();
-
-  const difference = day - 30
-
-  //JOS difference ON NEGATIIVINEN
-  if (difference < 1) {
-      //PALATAANKO VIIME VUODELLE?
-      // JOS KYLLÄ
-      if (month == 0) {
-          //Edellinen vuosi, joulukuu, 30 päivää sitten
-          console.log('Palataan edelliseen vuoteen')
-          date.setFullYear(year-1)
-          date.setMonth(12)
-          date.setDate(day-30)
-      // JOS EI
-      } else {
-          //Nykyinen vuosi, edellinen kuukausi, 30 päivää sitten
-          console.log('Palataan edelliseen kuukauteen')
-          date.setFullYear(year)
-          date.setMonth(month)
-          date.setDate(day-30)
-      }
-  //JOS difference ON POSITIIVINEN
-  } else {
-      //Nykyinen vuosi, nykyinen kuukausi, 30 päivää sitten
-      console.log('Pysytään tässä kuukaudessa')
-      date.setFullYear(year)
-      date.setMonth(month)
-      date.setDate(day-30)
-  }
-
-  console.log('Uusi: ' + date)
-  const print = date.toISOString();
-  const getThirtyDays = print.slice(0, 11)
+  const getMeasurements = setDate(30);
 
   try {
     const response = await fetch(
-      baseUrl + `/result/self?from=${getThirtyDays}00%3A00%3A00%2B00%3A00`,
+      baseUrl + `/result/self?from=${getMeasurements}00%3A00%3A00%2B00%3A00`,
       {
         method: 'GET',
         headers: headers,
