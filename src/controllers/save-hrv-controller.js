@@ -63,7 +63,9 @@ const getUserData = async (req, res, next) => {
               readiness: results.results[i].result.readiness,
               pns_index: results.results[i].result.pns_index,
               sns_index: results.results[i].result.sns_index,
-              rmssd: results.results[i].result.rmssd_ms
+              rmssd: results.results[i].result.rmssd_ms,
+              phy_age: Math.round(results.results[i].result.physiological_age),
+              bpm : Math.round(results.results[i].result.mean_hr_bpm)
             }
             const insertEntry = await createKubiosEntry(req.params.id, newKubios);
             console.log('Meni läpi' + insertEntry)

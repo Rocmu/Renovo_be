@@ -20,6 +20,8 @@ CREATE TABLE Kubios (
     pns_index DECIMAL(5,2),
     sns_index DECIMAL(5,2),
     rmssd INT,
+    phy_age INT,
+    bpm INT,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );

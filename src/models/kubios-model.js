@@ -34,8 +34,8 @@ const checkKubios = async (user_id) => {
 
 const createKubiosEntry = async (user_id, data) => {
   try {
-    const [result] = await promisePool.query('INSERT INTO Kubios (user_id, result_date, readiness, pns_index, sns_index, rmssd) VALUES (?, ?, ?, ?, ?, ?)',
-      [user_id, data.result_date, data.readiness, data.pns_index, data.sns_index, data.rmssd]
+    const [result] = await promisePool.query('INSERT INTO Kubios (user_id, result_date, readiness, pns_index, sns_index, rmssd, phy_age, bpm) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+      [user_id, data.result_date, data.readiness, data.pns_index, data.sns_index, data.rmssd, data.phy_age, data.bpm]
     );
     console.log('createKubiosEntry', result);
     return {message: 'New Kubios entry created.', result};

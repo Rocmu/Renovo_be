@@ -89,6 +89,8 @@ const getDataTen = async (req, res, next) => {
     let pnsArray = []
     let snsArray = []
     let rmssdArray = []
+    let phyAgeArray = []
+    let bpmArray = []
     let result_dateArray = []
 
     for (let i = 0; i < results.results.length; i++) {
@@ -96,14 +98,18 @@ const getDataTen = async (req, res, next) => {
       pnsArray.push(results.results[i].result.pns_index)
       snsArray.push(results.results[i].result.sns_index)
       rmssdArray.push(results.results[i].result.rmssd_ms)
-      result_dateArray.push(results.results[i].daily_result)
+      phyAgeArray.push(Math.round(results.results[i].result.physiological_age))
+      bpmArray.push(Math.round(results.results[i].result.mean_hr_bpm))
+      result_dateArray.push(new Date(results.results[i].daily_result).toLocaleDateString("fi-FI"))
     };
     return res.status(200).json({
       daily_result: result_dateArray,
       readiness: readinessArray,
       pns: pnsArray,
       sns: snsArray,
-      rmssd: rmssdArray
+      rmssd: rmssdArray,
+      phy_age: phyAgeArray,
+      bpm: bpmArray
       });
 
   } catch (error) {
@@ -143,6 +149,8 @@ const getDataThirty = async (req, res, next) => {
     let pnsArray = []
     let snsArray = []
     let rmssdArray = []
+    let phyAgeArray = []
+    let bpmArray = []
     let result_dateArray = []
 
     for (let i = 0; i < results.results.length; i++) {
@@ -150,14 +158,18 @@ const getDataThirty = async (req, res, next) => {
       pnsArray.push(results.results[i].result.pns_index)
       snsArray.push(results.results[i].result.sns_index)
       rmssdArray.push(results.results[i].result.rmssd_ms)
-      result_dateArray.push(results.results[i].daily_result)
+      phyAgeArray.push(Math.round(results.results[i].result.physiological_age))
+      bpmArray.push(Math.round(results.results[i].result.mean_hr_bpm))
+      result_dateArray.push(new Date(results.results[i].daily_result).toLocaleDateString("fi-FI"))
     };
     return res.status(200).json({
       daily_result: result_dateArray,
       readiness: readinessArray,
       pns: pnsArray,
       sns: snsArray,
-      rmssd: rmssdArray
+      rmssd: rmssdArray,
+      phy_age: phyAgeArray,
+      bpm: bpmArray
       });
 
   } catch (error){
