@@ -29,11 +29,11 @@
  *     {
  *       "Others_id": 2,
  *       "user_id": 1,
- *       "others_date": "2025-04-30T07:17:00.000Z",
+ *       "others_date": "2025-04-30",
  *       "description": "Ahdistuskohtaus.",
  *       "intensity": "Medium",
  *       "notes": "Menty töihin.",
- *       "created_at": "2025-04-30T07:17:00.000Z"
+ *       "created_at": "2025-05-24 13:11:5"
  *      }
  *
  *     ...
@@ -119,11 +119,11 @@
  *     {
  *       "Others_id": 2,
  *       "user_id": 1,
- *       "others_date": "2025-04-30T07:17:00.000Z",
+ *       "others_date": "2025-04-30",
  *       "description": "Ahdistuskohtaus.",
  *       "intensity": "Medium",
  *       "notes": "Menty töihin.",
- *       "created_at": "2025-04-30T07:17:00.000Z"
+ *       "created_at": "2025-05-24 13:11:5"
  *      }
  *
  *     ...
@@ -160,11 +160,11 @@
  *     {
  *       "Others_id": 2,
  *       "user_id": 1,
- *       "others_date": "2025-04-30T07:17:00.000Z",
+ *       "others_date": "2025-04-30",
  *       "description": "Ahdistuskohtaus.",
  *       "intensity": "Medium",
  *       "notes": "Menty töihin.",
- *       "created_at": "2025-04-30T07:17:00.000Z"
+ *       "created_at": "2025-05-24 13:11:5"
  *      }
  *
  * @apiError InvalidValue Input value was invalid/missing.

@@ -27,7 +27,7 @@
  *       "disagreement_id": 2,
  *       "user_id": 1,
  *       "notes": "En koe itseäni niin palautuneeksi, kuin eilisen data väitti.",
- *       "created_at": "2025-04-10T07:35:46.000Z"
+ *       "created_at": "2025-04-23 13:11:51"
  *	   }
  *     ...
  *
@@ -105,9 +105,9 @@
  *
  *     {
  *       "disagreement_id": 2,
- *       "disagreement_id": 1,
+ *       "user_id": 1,
  *       "notes": "En koe itseäni niin palautuneeksi, kuin eilisen data väitti.",
- *       "created_at": "2025-04-10T07:35:46.000Z"
+ *       "created_at": "2025-04-23 13:11:51"
  *      }
  *
  *     ...
@@ -142,7 +142,7 @@
  *       "disagreement_id": 1,
  *       "user_id": 1,
  *       "notes": "En koe itseäni niin palautuneeksi, kuin eilisen data väitti.",
- *       "created_at": "2025-04-10T07:35:46.000Z"
+ *       "created_at": "2025-04-23 13:11:51"
  *      }
  *
  * @apiError InvalidValue Input value was invalid/missing.

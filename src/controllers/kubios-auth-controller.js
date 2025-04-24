@@ -137,7 +137,7 @@ const syncWithLocalUser = async (kubiosUser) => {
 */
 const postLogin = async (req, res, next) => {
   const {username, password} = req.body;
-  // console.log('login', req.body);
+  //console.log('login', req.body);
   try {
     // Try to login with Kubios
     // ADD AN ABILITY TO LOGIN TO RENOVO EVEN IF KUBIOS SERVER IS DOWN!!!

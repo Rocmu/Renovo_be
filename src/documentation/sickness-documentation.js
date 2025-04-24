@@ -29,11 +29,11 @@
  *     {
  *       "Sickness_id": 2,
  *       "user_id": 1,
- *       "sickness_date": "2025-04-29T07:01:04.000Z",
+ *       "sickness_date": "2025-04-29",
  *       "description": "Kova kuume.",
  *       "impact": "High",
  *       "notes": "Jääty pois töistä.",
- *		   "created_at": "2025-04-29T07:01:04.000Z"
+ *		   "created_at": "2025-04-16 15:18:45"
  *      }
  *
  *     ...
@@ -119,11 +119,11 @@
  *     {
  *       "Sickness_id": 2,
  *       "user_id": 1,
- *       "sickness_date": "2025-04-29T07:01:04.000Z",
+ *       "sickness_date": "2025-04-29",
  *       "description": "Kova kuume.",
  *       "impact": "High",
  *       "notes": "Jääty pois töistä.",
- *		   "created_at": "2025-04-29T07:01:04.000Z"
+ *		   "created_at": "22025-04-29 15:18:45"
  *      }
  *
  *     ...
@@ -160,11 +160,11 @@
  *     {
  *       "Sickness_id": 1,
  *       "user_id": 1,
- *       "sickness_date": "2025-04-29T07:01:04.000Z",
+ *       "sickness_date": "2025-04-29",
  *       "description": "Kova kuume.",
  *       "impact": "High",
  *       "notes": "Jääty pois töistä.",
- *		   "created_at": "2025-04-29T07:01:04.000Z"
+ *		   "created_at": "2025-04-29 15:18:45"
  *      }
  *
  * @apiError InvalidValue Input value was invalid/missing.

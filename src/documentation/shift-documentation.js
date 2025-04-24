@@ -119,11 +119,11 @@
  *     {
  *       "shift_id": 2,
  *       "user_id": 1,
- *       "start_date": "2025-04-17T21:00:00.000Z",
+ *       "start_date": "2025-04-17",
  *       "start_time": "19:30:00",
  *       "end_time": "03:30:00",
- *       "end_date": "2025-04-18T21:00:00.000Z",
- *	  "created_at": "2025-04-10T05:59:16.000Z"
+ *       "end_date": "2025-04-18",
+ *	  "created_at": "2025-04-16 15:18:45"
  *     }
  *
  *     ...
@@ -160,11 +160,11 @@
  *     {
  *       "shift_id": 1,
  *       "user_id": 1,
- *       "start_date": "2025-04-16T21:00:00.000Z",
+ *       "start_date": "2025-04-16",
  *       "start_time": "19:30:00",
  *       "end_time": "03:30:00",
- *       "end_date": "2025-04-17T21:00:00.000Z",
- *	  "created_at": "2025-04-10T05:59:16.000Z"
+ *       "end_date": "2025-04-17",
+ *	  "created_at": "2025-04-16 15:18:45"
  *     }
  *
  * @apiError InvalidValue Input value was invalid/missing.

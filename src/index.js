@@ -8,6 +8,8 @@ import sicknessRouter from './routes/sickness-router.js';
 import othersRouter from './routes/others-router.js';
 import kubiosRouter from './routes/kubios-router.js';
 
+import { errorHandler, notFoundHandler } from './middlewares/error-handler.js';
+
 const hostname = '127.0.0.1';
 const app = express();
 const port = 3000;
@@ -27,6 +29,11 @@ app.use('/api/exercise', exerciseRouter);
 app.use('/api/sickness', sicknessRouter);
 app.use('/api/others', othersRouter);
 app.use('/api/kubios', kubiosRouter);
+
+//404 virheet
+app.use(notFoundHandler);
+//yleinen virhe
+app.use(errorHandler);
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

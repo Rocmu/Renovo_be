@@ -33,7 +33,7 @@ const getUserData = async (req, res, next) => {
       const userCreated = await selectCreatedAt(req.params.id)
 
       const current_date = new Date();
-      const created_at = userCreated.created_at;
+      const created_at = new Date(userCreated.created_at);
       const difference = current_date - created_at;
       const inDays = difference / 60 / 60 / 24 / 1000;
       console.log(current_date)

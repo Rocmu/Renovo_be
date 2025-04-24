@@ -31,13 +31,13 @@
  *     {
  *       "Exercise_id": 2,
  *       "user_id": 1,
- *       "exercise_date": "2025-04-30T07:01:04.000Z",
+ *       "exercise_date": "2025-04-30",
  *       "exercise_type": "Uinti",
  *       "start_time": "15:30:00",
  *       "end_time": "16:30:00",
  *       "level": "High",
  *       "notes": "Treenataan kunnolla, kun kisat ensi viikolla.",
- *	     "created_at": "2025-04-29T16:22:24.000Z"
+ *	     "created_at": "2025-04-23 13:11:51"
  *     }
  *
  *     ...
@@ -127,13 +127,13 @@
  *     {
  *       "Exercise_id": 2,
  *       "user_id": 1,
- *       "exercise_date": "2025-04-30T07:01:04.000Z",
+ *       "exercise_date": "2025-04-12",
  *       "exercise_type": "Uinti",
  *       "start_time": "15:30:00",
  *       "end_time": "16:30:00",
  *       "level": "High",
  *       "notes": "Treenataan kunnolla, kun kisat ensi viikolla.",
- *		   "created_at": "2025-04-29T16:22:24.000Z"
+ *		   "created_at": "2025-04-23 13:11:51"
  *      }
  *
  *     ...
@@ -172,13 +172,13 @@
  *     {
  *       "Exercise_id": 1,
  *       "user_id": 1,
- *       "exercise_date": "2025-04-30T07:01:04.000Z",
+ *       "exercise_date": "2025-04-30",
  *       "exercise_type": "Uinti",
  *       "start_time": "15:30:00",
  *       "end_time": "16:30:00",
  *       "level": "High",
  *       "notes": "Treenataan kunnolla, kun kisat ensi viikolla.",
- *		   "created_at": "2025-04-29T16:22:24.000Z"
+ *		   "created_at": "2025-04-23 13:11:51"
  *      }
  *
  * @apiError InvalidValue Input value was invalid/missing.

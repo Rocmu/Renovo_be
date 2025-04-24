@@ -69,7 +69,7 @@
               "user": {
                 "user_id": 1,
                 "username": "johndoe@example.com",
-                "created_at": "2025-04-03T13:00:15.000Z",
+                "created_at": "2025-04-03 13:11:51",
                 "user_level": "regular"
        },
     *

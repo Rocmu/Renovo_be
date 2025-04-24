@@ -8,44 +8,44 @@ import {
   deleteSickness,
 } from '../controllers/sickness-controller.js';
 import { body } from 'express-validator';
-import { errorHandler, validationErrorHandler } from '../middlewares/error-handler.js';
+import { /*errorHandler,*/ validationErrorHandler } from '../middlewares/error-handler.js';
 import { authenticateToken } from '../middlewares/authentication.js';
 
 const sicknessRouter = express.Router();
 
 sicknessRouter
   .route('/')
-  .get(authenticateToken, getSicknesses, errorHandler)
+  .get(authenticateToken, getSicknesses/*, errorHandler*/)
   .post(
     authenticateToken,
     body('user_id').isInt(),
     body('sickness_date').isDate(),
-    body('description').isString().notEmpty(),
+    body('description').trim().escape().isString().notEmpty(),
     body('impact').isIn(['Low', 'Medium', 'High']),
-    body('notes').isString().optional({ nullable: true }),
+    body('notes').trim().escape().isString().optional({ nullable: true }),
     validationErrorHandler,
     postSickness,
-    errorHandler
+    /*errorHandler*/
   );
 
 sicknessRouter
   .route('/user/:id')
-  .get(authenticateToken, getSicknessesByUserId, errorHandler);
+  .get(authenticateToken, getSicknessesByUserId/*, errorHandler*/);
 
 sicknessRouter
   .route('/:id')
-  .get(authenticateToken, getSicknessById, errorHandler)
+  .get(authenticateToken, getSicknessById/*, errorHandler*/)
   .put(
     authenticateToken,
     body('user_id').isInt(),
     body('sickness_date').isDate(),
-    body('description').isString().notEmpty(),
+    body('description').trim().escape().isString().notEmpty(),
     body('impact').isIn(['Low', 'Medium', 'High']),
-    body('notes').isString().optional({ nullable: true }),
+    body('notes').trim().escape().isString().optional({ nullable: true }),
     validationErrorHandler,
     putSickness,
-    errorHandler
+    /*errorHandler*/
   )
-  .delete(authenticateToken, deleteSickness, errorHandler);
+  .delete(authenticateToken, deleteSickness/*, errorHandler*/);
 
 export default sicknessRouter;

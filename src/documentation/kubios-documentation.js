@@ -16,6 +16,8 @@
  * @apiSuccess {Number} results.pns PNS index values of the requested results.
  * @apiSuccess {Number} results.sns SNS index values of the requested results.
  * @apiSuccess {Number} results.rmssd RMSSD values of the requested results.
+ * @apiSuccess {Number} results.phy_age Physiological ages of each requested result.
+ * @apiSuccess {Number} results.bpm BPM values of the requested results.
  *
  *
  * @apiSuccessExample Success-Response:
@@ -55,6 +57,8 @@
  * @apiSuccess {Number} results.pns PNS index values of the requested results.
  * @apiSuccess {Number} results.sns SNS index values of the requested results.
  * @apiSuccess {Number} results.rmssd RMSSD values of the requested results.
+ * @apiSuccess {Number} results.phy_age Physiological ages of each requested result.
+ * @apiSuccess {Number} results.bpm BPM values of the requested results *
  *
  *
  * @apiSuccessExample Success-Response:
@@ -106,7 +110,7 @@
  *    {
  *      "message": "Seuranta-aika on aktiivinen.",
  *      "user": {
- *        "created_at": "2025-02-25T13:00:15.000Z"
+ *        "created_at": "2025-04-23 13:11:5"
  *       },
  *      "profile_lifespan": "Ollut voimassa 7.97663 päivää."
  *    }
@@ -124,8 +128,8 @@
  *
  *    {
  *      "message": "Seuranta- aika on ohi.",
- *      "user_id": "2025-03-25T13:00:15.000Z"
- *    } *
+ *      "data_saved": "2025-05-24 13:11:5"
+ *    }
  *
  * @apiError InvalidParam Params value was invalid/missing.
  * @apiErrorExample Error-Response:
