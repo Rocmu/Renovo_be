@@ -31,14 +31,9 @@
  *     HTTP/1.1 200 OK
  *     {
  *       "message": "Logged in successfully with Kubios",
- *       "user": {
- *			"email": "johndoe@example.com",
- *			"family_name": "Doe",
- *			"given_name": "John",
- *			"sub": "...abc..."
- *		},
- *		"user_id": 1,
- *		"token": ...abc...
+ *       "user":"johndoe@example.com",
+ *		   "user_id": 1,
+ *		   "token": ...abc...
  *     }
  *
  * @apiError Invalidlogin Login information was invalid.

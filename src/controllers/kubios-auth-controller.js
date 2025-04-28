@@ -155,7 +155,7 @@ const postLogin = async (req, res, next) => {
     );
     return res.json({
       message: 'Logged in successfully with Kubios',
-      user: kubiosUser,
+      user: kubiosUser.email,
       user_id: localUserId,
       token,
     });
