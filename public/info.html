@@ -1,0 +1,195 @@
+<!-- tänne tulee hrv-tietoa tietämättömille -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Info</title>
+    <!-- <link rel="stylesheet" href="/src/styles/info.css" /> -->
+    <script type="module" crossorigin src="./assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
+    <script type="module" crossorigin src="./assets/main-BZnlAnNM.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/main-M6X2BZo9.css">
+    <link rel="stylesheet" crossorigin href="./assets/info-DGLnRiKE.css">
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="left-header">
+        <button class="back-button" onclick="window.location.href='https://www.terveystalo.com'">
+          Palaa Terveystaloon
+        </button>
+        <div class="logo">Renovo</div>
+      </div>
+      <div class="right-header">
+        <span id="show-username-header"></span>
+        <button id="log-out-user">Kirjaudu ulos</button>
+      </div>
+    </header>
+
+    <!-- Navigaatio -->
+  <div class="nav-bar">
+    <div id="mob-nav">
+      <div class="line-1"></div>
+      <div class="line-2"></div>
+      <div class="line-3"></div>
+    </div>
+    <div class="logo-mob">Renovo</div>
+    <a href="home.html">Etusivu</a>
+    <a href="calendar.html">Kalenteri</a>
+    <a href="hrv.html">Tulokset</a>
+    <a href="info.html">HRV-info</a>
+  </div>
+
+  <!-- Mobiili Navigaatio -->
+  <div class="mob-nav-bar">
+    <ul>
+        <li><a href="home.html">Etusivu</a></li>
+        <li><a href="calendar.html">Kalenteri</a></li>
+        <li><a href="hrv.html">Tulokset</a></li>
+        <li><a href="info.html">HRV-info</a></li>
+    </ul>
+  </div>
+
+    <!--Info boksit-->
+    <main class="info-column">
+      <div class="text-box">
+        <h2>Näin suoritat mittauksen.</h2>
+        <p>
+          Päivän mittaan jokainen asia mitä teet kuormittaa kehoasi ja sillä on vaikutusta mittaustuloksiin. On siis
+          tärkeää suorittaa mittaukset säännöllisesti joka päivä heti herättyäsi, jolloin kehosi on saanut palautua,
+          jotta päivän aikana kertynyt kuormitus ei vaikuta tuloksiin. Säännöllisesti ja samaa kaavaa noudattaen
+          suoritetut mittaukset parantavat tulosten tarkkuutta.
+        </p>
+        <ol>
+          <li>Pue laite ja yhdistä se puhelimeesi. Aloita mittaus KubiosHRV-sovelluksesta.</li>
+          <li>Ota mukava asento maaten tai puoli-istuen.</li>
+          <li>Rentoudu mittauksen aikana ja hengitä normaalisti.</li>
+          <li>Varmista mittauksen laatu sen päätyttyä.</li>
+        </ol>
+      </div>
+      <div class="text-box">
+        <h2>Mikä on HRV?</h2>
+        <p>
+          HRV (heart rate variability) tarkoittaa sykevälivaihtelua, joka kertoo peräkkäisten sydämenlyöntien välisen
+          ajan vaihtelusta. Seuraamalla sykevälivaihtelun muutoksia saadaan tietoa kehon fysiologisesta valmiudesta
+          kohdata jokapäiväistä stressiä. Mittausten avulla saadaan kuva autonomisen hermoston tasapainosta, mikä
+          vaikuttaa palautumiseen ja resilienssiin.
+        </p>
+        <p>
+          Kehon ollessa lepo- ja palautumisvaiheessa parasympaattinen hermosto on aktiivisempi, jolloin sykevälivaihtelu
+          kasvaa. Vastaavasti sympaattisen hermoston ollessa aktiivisempi verenpaine ja syketaajuus kohoaa, jolloin
+          sykevälivaihtelu laskee. Korkeammat sykevälivaihteluarvot viittaavat parempaan terveydentilaan, kun taas
+          madaltunut sykevälivaihtelu lisääntyneeseen stressiin ja alentuneeseen terveydentilaan.
+        </p>
+      </div>
+      <div class="text-box">
+        <h2>PNS-indeksi</h2>
+        <p>
+          PNS-indeksi kertoo parasympaattisen hermoston aktiivisuuden vaikutuksesta sydämen toimintaan. Parasympaattisen
+          hermoston aktiivisuus kohottaa sykevälivaihtelua, kun syke laskee. Sykevälivaihtelu kasvaa respiratorisen
+          sinusarytmian kautta eli hengityksen aikana tapahtuvien muutosten aikana. Sisäänhengityksen aikana syke nousee
+          ja uloshengityksen aikana syke laskee.
+        </p>
+        <p>
+          PNS-indeksin arvon ollessa nolla se tarkoittaa, että parasympaattista aktiivisuutta heijastavat parametrit
+          ovat keskimäärin samankaltaisia kuin normaaliväestössä. Lepotilassa PNS-indeksin arvot sijoittuvat
+          tyypillisesti normaaliväestön jakauman ±2 keskihajonnan sisälle. Positiiviset arvot viittaavat keskiarvoa
+          korkeampaan ja negatiiviset arvot keskiarvoa alhaisempaan palautumiseen ja rentoutumiseen.
+        </p>
+      </div>
+      <div class="text-box">
+        <h2>SNS-indeksi</h2>
+        <p>
+          SNS-indeksi kertoo sympaattisen hermoston aktiivisuuden vaikutuksesta sydämen toimintaan. Sympaattisen
+          hermoston kohonnut aktiivisuus tyypillisesti nostaa sykettä ja madaltaa sykevälivaihtelua, kun respiratorisen
+          sinusarytmiaan liittyvät nopeat muutokset laskevat.
+        </p>
+        <p>
+          SNS-indeksin arvo nolla kertoo, että sympaattisen hermoston aktiivisuutta heijastavien parametrien arvot ovat
+          keskimäärin samankaltaisia kuin normaaliväestössä. Lepotilassa SNS-indeksin arvot sijoittuvat tyypillisesti
+          normaaliväestön jakauman ±2 keskihajonnan sisälle. Negatiiviset arvot viittaavat keskiarvoa alhaisempaan ja
+          positiiviset arvot keskiarvoa korkeampaan stressiin ja kuormitukseen. Stressin tai raskaan liikunnan
+          seurauksena arvot voivat nousta huomattavasti korkeammalle jopa 5–35.
+        </p>
+      </div>
+      <div class="text-box">
+        <h2>RMSDD</h2>
+        <p>
+          RMSDD kertoo peräkkäisten sydämen lyöntivälien ajan muutosten neliöllisen keskiarvon ja on yksi keskeisistä
+          sykevälivaihtelun mittareista. Sen avulla saadaan mitattua lyhytaikaisia sykevälien vaihteluita, jotka
+          liittyvät parasympaattisen hermoston aktiivisuuteen. RMSSD:tä käytetään palautumisen ja stressitilojen
+          arvioinnissa, sillä se korreloi vahvasti parasympaattisen hermoston toiminnan kanssa. Yleisesti ottaen
+          korkeammat arvot viittaavat parempaan sydämen autonomiseen säätelyyn sekä palautumiskykyyn. Tyypillisesti arvo
+          on 19-75ms.
+        </p>
+      </div>
+      <div class="text-box">
+        <h2>Readiness</h2>
+        <p>
+          Readiness-indeksi arvioi kehon fysiologista tilaa vertaamalla tämänhetkisen leposykevälivaihtelun muutoksia
+          aiempiin tuloksiin. Arvio annetaan 0-100% välillä ja jaetaan neljään luokkaan. Readiness-indeksin laskemiseen
+          käytetään PNS-indeksiä, sillä se heijastaa parasympaattisen hermoston muutoksia tarkemmin verrattuna
+          yksittäisiin mittareihin kuten RMSDD.
+        </p>
+        <p>
+          Readiness-indeksin tulokset jaetaan neljään kategoriaan, jotka kertovat muutoksista verrattuna tyypillisiin
+          HRV-arvoihisi:
+        </p>
+        <ul>
+          <li>
+            <b>Hyvin matala (0–24 %) –</b> Huomattavasti matalampi tulos kuin yleensä (vain 2–3 % tuloksistasi), mikä kertoo
+            parasympaattisen aktiivisuuden olevan alhainen ja viittaa korkeaan stressitilaan tai väsymykseen
+          </li>
+          <li>
+            <b>Matala (25–49 %) –</b> Tulos on alle normaalitasosi (n. 14 % tuloksistasi), mikä viittaa parasympaattisen
+            hermoston aktiivisuuden laskuun ja viittaa kohtalaiseen stressitilaan
+          </li>
+          <li>
+            <b>Normaali (50–74 %) –</b> Tyypillinen tasosi mittauksissa (n. 68 % tuloksistasi), mikä viittaa parasympaattisen
+            hermoston aktiivisuuden olevan balanssissa.
+          </li>
+          <li>
+            <b>Korkea (75–100 %) –</b> Tulos yli tyypillisen normaali tasosi (n. 16 % tuloksistasi). Korkea tulos viittaa lisääntyneeseen
+            parasympaattisen hermoston aktiivisuuteen, mikä viittaa optimaaliseen palautumiseen ja alhaisempaan
+            stressitasoon.
+          </li>
+        </ul>
+        <p>
+          Systemaattisesti suoritetut mittaukset parantavat tulosten tarkkuutta käyttäen mittausdataa jopa 90 päivän
+          ajalta. Readiness-indeksi tarjoaa yksilöllisen katsauksen valmiuteesi kohdata jokapäiväistä stressiä ja
+          kuormitusta, jota voit käyttää apuna stressinhallinnassa ja palautumisessa.
+        </p>
+      </div>
+      <div class="text-box">
+        <h2>FAQ</h2>
+        <h3>Miten readiness-indeksi lasketaan?</h3>
+        <p>
+          Readiness arvo lasketaan vertaamalla tämänhetkistä leposykevälivaihteluasi aiempiin mittaustuloksiisisi jopa
+          kolmen kuukauden ajalta. Laskemiseen käytetään PNS-indeksiä, sillä se tarjoaa tarkemman kuvan parasympaattisen
+          hermoston toiminnasta kuin yksittäiset HRV arvot kuten RMSDD.
+        </p>
+        <h3>Mitkä asiat vaikuttavat mittaustarkkuuteen?</h3>
+        <p>
+          Tarkkaa mittaustulosta varten mittauksen tulisi kestää vähintään 3min. Mittauksia on mieluusti tehtävä
+          päivittäin, jotta saadaan muodostettua kattava perustaso leposykevälivaihtelustasi. Lisäksi mittaukset tulisi
+          suorittaa johdonmukaisesti, jotta tuloksiin ei synny epänormaalia vaihtelua.
+        </p>
+        <h3>Miten mittaus tulisi suorittaa?</h3>
+        <p>
+          Mittaukset on suositeltavaa suorittaa päivittäin heti herättyäsi maaten tai puoli-istuvassa asennossa.
+          Rentoudu ja hengitä normaalisti sekä vältä puhumista, sillä se vaikuttaa hengitykseesi, mikä voi johtaa
+          virheelliseen tulokseen.
+        </p>
+        <h3>Onko syytä huolestua, jos tulos on matala?</h3>
+        <p>
+          Ei syytä huoleen. On täysin normaalia saada matala tulos ajoittain. Matala tulos tarkoittaa, että
+          parasympaattisen hermoston aktiivisuus on laskenut tyypillisestä tasostasi, mikä voi viitata kohtalaiseen
+          stressiin tai kuormitukseen. Unella on myös vaikutus tuloksiisi, joten voi olla tulosta huonosti nukutusta
+          yöstä.
+        </p>
+      </div>
+    </main>
+    <footer>Renovo App</footer>
+    <button id="backTopBtn" title="Takaisin ylös"><p><i class="arrow up"></i></p></button>
+  </body>
+</html>

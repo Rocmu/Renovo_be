@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Renovo App</title>
+    <script type="module" crossorigin src="./assets/calendar-OPwvanru.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-BZnlAnNM.js">
+    <link rel="modulepreload" crossorigin href="./assets/fetch-DBomrZ5j.js">
+    <link rel="stylesheet" crossorigin href="./assets/main-M6X2BZo9.css">
+    <link rel="stylesheet" crossorigin href="./assets/calendar-9e73hbW2.css">
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="left-header">
+        <button class="back-button" onclick="window.location.href='https://www.terveystalo.com'">Palaa Terveystaloon</button>
+        <div class="logo">Renovo</div>
+      </div>
+      <div class="right-header">
+        <span id="show-username-header"></span>
+        <button id="log-out-user">Kirjaudu ulos</button>
+      </div>
+    </header>
+
+    <!-- Navigaatio -->
+  <div class="nav-bar">
+    <div id="mob-nav">
+      <div class="line-1"></div>
+      <div class="line-2"></div>
+      <div class="line-3"></div>
+    </div>
+    <div class="logo-mob">Renovo</div>
+    <a href="home.html">Etusivu</a>
+    <a href="calendar.html">Kalenteri</a>
+    <a href="hrv.html">Tulokset</a>
+    <a href="info.html">HRV-info</a>
+  </div>
+
+  <!-- Mobiili Navigaatio -->
+  <div class="mob-nav-bar">
+    <ul>
+        <li><a href="home.html">Etusivu</a></li>
+        <li><a href="calendar.html">Kalenteri</a></li>
+        <li><a href="hrv.html">Tulokset</a></li>
+        <li><a href="info.html">HRV-info</a></li>
+    </ul>
+  </div>
+
+    <!-- Sisältö -->
+    <div class="calendar-container">
+
+      <!-- Yläosa: otsikko ja painikkeet -->
+      <div class="calendar-header">
+        <img src="./img/calendar.jpg" class="calendar-bg-img" alt="Kalenteri">
+        <div class="calendar-title">Kalenteri</div>
+        <div class="calendar-description">
+          Painikkeiden avulla voit syöttää työvuorosi sekä muut rasitukseen ja palautumiseen vaikuttavat tapahtumat kalenteriin.
+          Voit muokata tai poistaa tallentamiasi tapahtumia painamalla kaleterista kyseistä tapahtumaa.
+        </div>
+        <div class="calendar-description">
+          <b>Kalenterin alapuolelta löydät lisäohjeistusta tapahtumien täyttöön tarvittaessa.</b>
+        </div>
+        <div class="calendar-buttons">
+          <button id="openShiftModal">Lisää työvuoroja</button>
+          <button id="openExerciseModal">Lisää liikunta</button>
+          <button id="openSicknessModal">Lisää sairastuminen</button>
+          <button id="openOthersModal">Muut tapahtumat</button>
+        </div>
+      </div>
+
+      <!-- Kalenterinäkymä -->
+      <div class="calendar-view">
+        <div id="calendarView"></div>
+        <button id="event-instructions">Lisätietoa tapahtumien tallennuksesta</button>
+      </div>
+
+      <!-- Info-osuus -->
+      <div class="calendar-info">
+        <div class="shift-info-box">
+          <h4>Työvuorot</h4>
+          <p>On tärkeää merkitä työvuorosi kalenteriin. Työvuorot voivat vaikuttaa unirytmiisi ja aiheuttaa henkistä ja fyysistä rasitusta,
+            jotka näkyvät mittaustuloksissasi. Terveystalon ammattilaiset voivat arvioida työn vaikutusta jaksamiseesi vertaamalla
+            työvuorojasi ja HRV-tuloksiasi.</p>
+        </div>
+
+        <div class="exercise-info-box">
+          <h4>Liikunta</h4>
+          <p>Säännöllinen liikunta parantaa peruskuntoasi, mikä parantaa myös mittaustuloksiasi.
+            Korkeasykkeiset ja raskaat liikuntaharjoitukset vaativat palautumista ja voivat heikentää HRV-tuloksiasi muutamaksi päiväksi,
+            eikä siitä tarvitse olla huolissaan. </p>
+        </div>
+
+        <div class="sickness-info-box">
+          <h4>Sairastuminen</h4>
+          <p>Lievätkin tulehdukset ja sairaudet näkyvät HRV-arvoissasi ja vaikuttavat jaksamiseesi.
+            Kaikki sairastumiset kannattaa merkitä kalenteriin, sillä nämä merkinnät auttavat Terveystalon
+            ammattilaisia tulostesi tulkitsemisessa.</p>
+        </div>
+
+        <div class="others-info-box">
+          <h4>Muut</h4>
+          <p>Joskus elämässä on tilanteita, jotka vaikuttavat uneen ja jaksamiseen tai aiheuttavat ylimääräistä stressiä.
+            Esimerkiksi huoli läheisen voinnista, nukkuminen meluisassa ympäristössä tai myöhään valvominen juhlissa voivat
+            näkyä poikkeuksina tuloksissasi.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Työvuorojen lisäysmodaali -->
+    <div id="shiftModal" class="calendar-modal">
+      <div class="calendar-modal-content" style="position: relative;">
+        <span class="calendar-modal-close" onclick="closeModal('shiftModal')">&times;</span>
+        <h2>Työvuorojen lisääminen</h2>
+        <p>Täytä alle työvuorojen alkamis- ja päättymisajat. Jätä vapaapäivät tyhjiksi.</p>
+        <form id="shiftForm">
+          <div class="form-shift-table">
+            <div class="form-shift-header"><span>Vuoron alkamis aika:</span><span>Vuoron päättymis aika:</span></div>
+          </div>
+          <div class="calendar-modal-actions">
+            <button type="submit">Tallenna</button>
+            <button type="button" onclick="closeModal('shiftModal')">Peruuta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Liikunta Modaali -->
+    <div id="exerciseModal" class="calendar-modal">
+      <div class="calendar-modal-content" style="position: relative;">
+        <span class="calendar-modal-close" onclick="closeModal('exerciseModal')">&times;</span>
+        <h2>Lisää liikunta</h2>
+        <form id="exerciseForm">
+          <label>Päivämäärä: <input type="date" name="exercise_date" required></label>
+          <label>Liikuntatyyppi: <input type="text" name="exercise_type" required></label>
+          <label>Alkaa: <input type="time" name="start_time" required></label>
+          <label>Päättyy: <input type="time" name="end_time" required></label>
+          <label>Taso:
+            <div class="emoji-rating">
+              <input type="radio" id="exercise-low" name="level" value="Low" required>
+              <label for="exercise-low">😊</label>
+              <input type="radio" id="exercise-medium" name="level" value="Medium">
+              <label for="exercise-medium">😐</label>
+              <input type="radio" id="exercise-high" name="level" value="High">
+              <label for="exercise-high">😫</label>
+            </div>
+          </label>
+          <label>Muistiinpanot: <textarea name="notes"></textarea></label>
+          <div class="calendar-modal-actions">
+            <button type="submit">Tallenna</button>
+            <button type="button" onclick="closeModal('exerciseModal')">Peruuta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Sairastuminen Modaali -->
+    <div id="sicknessModal" class="calendar-modal">
+      <div class="calendar-modal-content" style="position: relative;">
+        <span class="calendar-modal-close" onclick="closeModal('sicknessModal')">&times;</span>
+        <h2>Lisää sairastuminen</h2>
+        <form id="sicknessForm">
+          <label>Päivämäärä: <input type="date" name="sickness_date" required></label>
+          <label>Kuvaus: <input type="text" name="description" required></label>
+          <label>Vaikutus:
+            <div class="emoji-rating">
+              <input type="radio" id="sickness-low" name="impact" value="Low" required>
+              <label for="sickness-low">😊</label>
+              <input type="radio" id="sickness-medium" name="impact" value="Medium">
+              <label for="sickness-medium">😐</label>
+              <input type="radio" id="sickness-high" name="impact" value="High">
+              <label for="sickness-high">😫</label>
+            </div>
+          </label>
+          <label>Muistiinpanot: <textarea name="notes"></textarea></label>
+          <div class="calendar-modal-actions">
+            <button type="submit">Tallenna</button>
+            <button type="button" onclick="closeModal('sicknessModal')">Peruuta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Muut tapahtumat Modaali -->
+    <div id="othersModal" class="calendar-modal">
+      <div class="calendar-modal-content" style="position: relative;">
+        <span class="calendar-modal-close" onclick="closeModal('othersModal')">&times;</span>
+        <h2>Muu tapahtuma</h2>
+        <form id="othersForm">
+          <label>Päivämäärä: <input type="date" name="others_date" required></label>
+          <label>Kuvaus: <input type="text" name="description" required></label>
+          <label>Intensiteetti:
+            <div class="emoji-rating">
+              <input type="radio" id="others-low" name="intensity" value="Low" required>
+              <label for="others-low">😊</label>
+              <input type="radio" id="others-medium" name="intensity" value="Medium">
+              <label for="others-medium">😐</label>
+              <input type="radio" id="others-high" name="intensity" value="High">
+              <label for="others-high">😫</label>
+            </div>
+          </label>
+          <label>Muistiinpanot: <textarea name="notes"></textarea></label>
+          <div class="calendar-modal-actions">
+            <button type="submit">Tallenna</button>
+            <button type="button" onclick="closeModal('othersModal')">Peruuta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+        <!-- Työvuoron muokkausmodaali -->
+    <div id="editShiftModal" class="calendar-modal">
+      <div class="calendar-modal-content">
+        <span class="calendar-modal-close" onclick="closeModal('editShiftModal')">&times;</span>
+        <h2>Muokkaa työvuoroa</h2>
+        <form id="editShiftForm">
+          <input type="hidden" id="eventId">
+          <label>Päivämäärä: <input type="date" id="editDate" required></label>
+          <label>Alkaa: <input type="time" id="editStartTime" required></label>
+          <label>Päättyy: <input type="time" id="editEndTime" required></label>
+          <div class="calendar-modal-actions">
+            <button type="submit">Tallenna</button>
+            <button type="button" id="deleteShiftButton" style="background-color:red;color:white;">Poista</button>
+            <button type="button" onclick="closeModal('editShiftModal')">Peruuta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- muiden muokkausmodaali -->
+    <div id="editModal" class="calendar-modal">
+      <div class="calendar-modal-content" style="position: relative;">
+        <span class="calendar-modal-close" onclick="closeModal('editModal')">&times;</span>
+        <h2>Muokkaa tapahtumaa</h2>
+        <form id="editEventForm">
+          <input type="hidden" name="event_id">
+          <input type="hidden" name="event_type">
+          <label>Päivämäärä: <input type="date" name="date" required></label>
+          <label>Kuvaus / tyyppi: <input type="text" name="description" required></label>
+          <label>Alkaa: <input type="time" name="start_time"></label>
+          <label>Päättyy: <input type="time" name="end_time"></label>
+          <label>Taso / vaikutus / intensiteetti:
+            <select name="level">
+              <option value="Low">😊</option>
+              <option value="Medium">😐</option>
+              <option value="High">😫</option>
+            </select>
+          </label>
+          <label>Muistiinpanot: <textarea name="notes"></textarea></label>
+          <div class="calendar-modal-actions">
+            <button type="submit">Tallenna muutokset</button>
+            <button type="button" id="deleteEventButton" style="background-color:red;color:white;">Poista</button>
+            <button type="button" onclick="closeModal('editModal')">Peruuta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <footer>Renovo App</footer>
+    <button id="backTopBtn" title="Takaisin ylös"><p><i class="arrow up"></i></p></button>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  </body>
+</html>

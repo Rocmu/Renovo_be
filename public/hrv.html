@@ -1,0 +1,195 @@
+<!--tänne header, nav ja footer-->
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Renovo App</title>
+    <script type="module" crossorigin src="./assets/hrv-C7iuUEQx.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-BZnlAnNM.js">
+    <link rel="modulepreload" crossorigin href="./assets/fetch-DBomrZ5j.js">
+    <link rel="stylesheet" crossorigin href="./assets/main-M6X2BZo9.css">
+    <link rel="stylesheet" crossorigin href="./assets/hrv-BtFiBfaW.css">
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="left-header">
+        <button class="back-button" onclick="window.location.href='https://www.terveystalo.com'">Palaa Terveystaloon</button>
+        <div class="logo">Renovo</div>
+      </div>
+      <div class="right-header">
+        <span id="show-username-header"></span>
+        <button id="log-out-user">Kirjaudu ulos</button>
+      </div>
+    </header>
+
+    <!-- Navigaatio -->
+  <div class="nav-bar">
+    <div id="mob-nav">
+      <div class="line-1"></div>
+      <div class="line-2"></div>
+      <div class="line-3"></div>
+    </div>
+    <div class="logo-mob">Renovo</div>
+    <a href="home.html">Etusivu</a>
+    <a href="calendar.html">Kalenteri</a>
+    <a href="hrv.html">Tulokset</a>
+    <a href="info.html">HRV-info</a>
+  </div>
+
+  <!-- Mobiili Navigaatio -->
+  <div class="mob-nav-bar">
+    <ul>
+        <li><a href="home.html">Etusivu</a></li>
+        <li><a href="calendar.html">Kalenteri</a></li>
+        <li><a href="hrv.html">Tulokset</a></li>
+        <li><a href="info.html">HRV-info</a></li>
+    </ul>
+  </div>
+
+    <div class="hrv-results-container">
+
+        <div class="hrv-results-container-header">
+            <h2>HRV analyysi ja tulokset</h2>
+            <p>Sovellus kerää HRV datasi Kubios HRV- sovelluksesta. Selaa edellisiä tuloksiasi, joita
+              työterveyslääkärisi käyttää kehosi palautumisen arvioinnissa.
+            </p>
+            <div class="hrv-buttons">
+              <button id="print-hrv-ten-days">10 viimeistä päivää</button>
+              <button id="print-hrv-thirty-days">30 viimeistä päivää</button>
+            </div>
+        </div>
+        <div class="hrv-results-container-content">
+            <div class="hrv-canvas-heading">
+              <h2 class="measurement-timespan"></h2>
+            </div>
+            <div class="canvas-wrapper">
+
+              <div>
+                  <h4>Readiness & RMSSD</h4>
+                  <canvas id="readiness-rmssd-chart"></canvas>
+              </div>
+              <div>
+                  <h4>SNS & PNS</h4>
+                  <canvas id="sns-pns-chart"></canvas>
+              </div>
+
+            </div>
+            <button id="canvas-one-text-boxes">Mitä arvot tarkoittavat?</button>
+        </div>
+        <div class="hrv-results-container-footer">
+          <div class="results-readiness-text-box">
+            <h4>Readiness</h4>
+            <p>Readiness-indeksin tulos arvioi asteikolla 0–100 % kehosi fysiologista tilaa levon aikaisen sykevälivaihtelun avulla.
+              Arvion tarkkuus paranee mitä enemmän mittauksia on suoritettu. Tyypillisesti 68 % tuloksista on 50–75 % välillä.
+            </p>
+          </div>
+          <div class="results-rmssd-text-box">
+            <h4>RMSSD</h4>
+            <p>RMSDD on yksi keskeisistä sykevälivaihtelun mittareista, joka hyödyllinen palautumisen ja stressitilan
+              arvioinnissa. Suuremmat arvot viittaavat parempaan sydämen autonomiseen säätelyyn ja palautumiseen.
+              Tyypillisesti arvo on 19-75ms välillä.
+            </p>
+          </div>
+          <div class="results-sns-text-box">
+            <h4>SNS index</h4>
+            <p>SNS-indeksi kuvaa sympaattisen hermoston aktiivisuutta. Suuremmat arvot viittaavat kohonneeseen
+              stressiin ja kuormitukseen. 95 %:lla aikuisista arvo levossa on -2 ja 2 välillä.
+            </p>
+          </div>
+          <div class="results-pns-text-box">
+            <h4>PNS index</h4>
+            <p>PNS-indeksi kuvaa parasympaattisen hermoston aktiivisuutta. Suuremmat arvot viittaavat
+              parempaan palautumiseen ja rentoutumiseen. 95 %:lla aikuisista arvo levossa on -2 ja 2 välillä.
+            </p>
+          </div>
+        </div>
+        <div class="hrv-results-container-content">
+          <div class="hrv-canvas-heading">
+            <h2 class="measurement-timespan-2"></h2>
+          </div>
+        <div class="canvas-wrapper-2">
+          <div>
+            <h4>Pulssi</h4>
+            <canvas id="bpm-chart"></canvas>
+          </div>
+          <div>
+            <h4>Fysiologinen ikä</h4>
+            <canvas id="age-chart"></canvas>
+          </div>
+        </div>
+          <button id="canvas-two-text-boxes">Mitä arvot tarkoittavat?</button>
+        </div>
+        <div class="hrv-results-container-footer-2">
+          <div class="results-bpm-text-box">
+              <h4>BPM</h4>
+              <p>BPM on sykkeesi keskiarvo.</p>
+          </div>
+          <div class="results-age-text-box">
+            <h4>Physiologinen ikä</h4>
+            <p>Fysiologinen ikä kehon hyvinvoinin kuvaaja, joka tarkoittaa kehon ja elinten toiminnan laatua,
+              suhteessa biologiseen ikääsi. Fysiologiset iät ovat omakohtaisia ja saattavat poiketa suuresti eri ihmisten välillä,
+              joilla on sama kronologinen ikä. Fysiologinen ikä on hyödyllinen ikäkohtaisten terveysongelmien ennakoinnissa.
+            </p>
+          </div>
+        </div>
+        <div class="hrv-user-feedback">
+          <div class="feedback-buttons">
+            <h2>Palaute HRV tuloksista</h2>
+            <p>Koetko mittaustulokset paikkaansa pitäviksi? Oletko sitä mieltä, että data ei kuvasta
+              todellista terveydentilaasi? Jos haluat antaa palautetta mielestäsi virheellisistä tuloksista,
+              voit lähettää vapaamuotoisesti palautetta HRV tuloksistasi.
+            </p>
+            <button id="open-feedback-form">Anna palautetta tuloksista</button>
+            <button id="view-prev-feedback">Edelliset palautteesi</button>
+          </div>
+          <div class="feedback-form-container">
+            <form id="feedback-form">
+                  <h4>Palautelomake</h4>
+                  <textarea id="feedback-text-id" name="notes-n-id" placeholder="Kirjoita vapaamuotoisesti palautteesi tähän tekstikenttään." required></textarea>
+            </form>
+            <input
+                  name="submit"
+                  type="submit"
+                  value="Tallenna palaute"
+                  class="create-feedback"
+                  id="post-feedback"/>
+          </div>
+        </div>
+
+        <div class="feedback-table">
+          <h2>Tallennetut palautteesi</h2>
+          <table class="feedback-list-table">
+            <thead>
+              <tr>
+                <th>Nro</th>
+                <th>Päivämäärä</th>
+                <th>Palaute</th>
+              </tr>
+            </thead>
+            <tbody class="tbody">
+            </tbody>
+        </table>
+      </div>
+
+      <div class="container-footer-info-link">
+        <div class="info-link-box-text">
+          <h2>Vinkkejä ja ohjeita mittauksiin</h2>
+          <p>HRV arvoihisi vaikuttavat lukuiset tekijät ja olosuhteet. Mittauksessa kannattaa pyrkiä
+            noudattamaan tarkkoja ohjeistuksia, jotta työterveyslääkärisi saa tarkimmat mahdolliset tulokset.
+            Näin takaat myös jatkotoimenpiteiden vastaavan parhaiten omia henkilökohtaisia tarpeitasi.
+          </p>
+        </div>
+        <a href="info.html">Lue mittausohjeet</a>
+      </div>
+
+    </div>
+
+    </main>
+    <footer>Renovo App</footer>
+    <button id="backTopBtn" title="Takaisin ylös"><p><i class="arrow up"></i></p></button>
+  </body>
+</html>
