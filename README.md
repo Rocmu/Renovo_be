@@ -1,30 +1,172 @@
 # Renovo
 
-## Backendin pystytys
+Renovo sovelluksen tarkoitus on seurata käyttäjän hyvinvointia ja jaksamista analysoimalla HRV-dataa (sydämen sykevälivaihtelu). Käyttäjä kykenee sisäänkirjautumisen jälkeen tarkastelemaan seuranta- ajalla kertyneitä HRV arvojaan, sekä antamaan niistä sovelluksen kautta palautetta. Käyttäjä voi myös syöttää omakohtaista tietoa, jotka vaikuttavat HRV- dataan, kuten työvuorot, urheilun, sairaustapaukset jne. HRV data saadaan Kubios HRV- sovelluksen kautta ([Kubios Oy](https://www.kubios.com/)). Renovo sovellus myös tarkistaa pitää silmällä seuranta- aikaa, tehden sen päätyttyä lopullisen pyynnön käyttäjän datasta, joka tallennetaan tietokantaan.
 
-asennetaan paketit npm i
+## Sisällysluettelo
 
-ajetaan node-projekti npm run dev
+- [Yleiskatsaus](#yleiskatsaus)
+- [Projektin rakenne](#projektin-rakenne)
+- [Käytetyt tekniikat](#käytetyt-tekniikat)
+- [Taustapalvelimen asennus, riippuvuudet ja tietokannat](#taustapalvelimen-asennus-riippuvuudet-ja-tietokannat)
+- [Tietokanta rakenne](#tietokanta-rakenne)
+- [API-dokumentaatio](#api-documentation)
+- [Tukimateriaali ja kunniamaininnat](#tukimateriaali-ja-kunniamaininnat)
+- [Bugit ja ongelmat](#bugit-ja-ongelmat)
+- [Tekijät](#tekijät)
 
-## KUBIOS LOGIN, testaus ja käyttöohjeet (LUE!!!!)
+## Yleiskatsaus
 
-1. Aja komennot: `npm install node-fetch` ja `npm install axios uuid` bashissa. Nämä asentaa tarvittavat kirjastot, jotka pistää API- pyynnöt Kubiokselle toiminaan. Ilman niitä sisäänkirjautuminen ei toimi.
+Tämä repositorio sisältää taustapalvelimen **Renovo**-sovellukselle. Sovelluksen käyttöliittymä löytyy erillisestä repositoriosta: [Renovo_fe](https://github.com/Rocmu/Renovo_fe).
 
-2. Luo tietokanta Renovo omalle koneelle `source <reitti_omalta_koneella/renovo.sql>`
+Taustapalvelin käsittelee käyttöliittymän (Client) kautta tulevat pyynnöt ja vastaa annettujen ohjeiden mukaisesti.
 
-3. Anna itselle oikeudet tietokantaan. Rosa tehnyt ohjeet create-user-example.sql- tiedostossa. Täytä ohjeiden mukaisesti ja copy paste terminaaliin.
+## Projektin rakenne
 
-4. Päivitä oma .env- tiedosto vastaamaan .env.example-tiedoston rakennetta ja täyttäkää .env:n tarvittavat kohdat. Osa (Kubiosta koskevista) täytettävistä kohdista löytyy Matin aineistosta viime kurssin [kurssimateriaalista](https://github.com/mattpe/hyte-web-dev/blob/main/12-kubios.md) --> "Implement Login Using Kubios Cloud" --> "2. Add Kubios settings to `.env` file (and to .env-sample)". Kubioksen Client Id saatiin Saken kurssilla periodissa 3. Kubios User Agent voi valita itse ja jwt_secret saa luoda parhaakseen näkemällä tavalla. Backend url ja Backend port voi jättää tyhjiksi. HUOM! EI MITÄÄN NÄISTÄ TIEDOISTA .env.sampleen!
+**Taustapalvelin**: Node.js + Express taustapalvelin MySQL/MariaDB tietokannalla. Projekti on rakennettu vastaamaan **Model-View-Controller (MVC)**- mallia. Alla on esitetty projektin MVC- tiedostomalli.
 
-.env- tiedosto on jo .gitignoressa, se ei siis hyppää Gittiin tai Githubiin.
+```dir
+src/
+├── controllers/
+│   ├── disagreement-controller.js
+│   └── exercise-controller.js
+│   └── kubios-auth-controller.js
+│   └── kubios-controller.js
+│   └── others-controller.js
+│   └── save-hrv-controller.js
+│   └── shift-controller.js
+│   └── sickness-controller.js
+├── documentation/
+├── middlewares/
+├── models/
+│   ├── disagreement-model.js
+│   └── exercise-model.js
+│   └── kubios-model.js
+│   └── others-model.js
+│   └── shift-model.js
+│   └── sickness-model.js
+│   └── user-model.js
+├── routes/
+│   ├── auth-router.js
+│   └── disagreement-router.js
+│   └── exercise-router.js
+│   └── kubios-router.js
+│   └── others-router.js
+│   └── shift-router.js
+│   └── sickness-router.js
+│   └── user-router.js
+├── utils/
+└── index.js
+```
 
-5. Serveri pyörimään `npm run dev`.
+### Renovo - REST arkkitehtuuri ja Kubios
 
-6. Mene test-request.http- tiedostoon, ja syötä oikeille paikoille username ja password. Ohjeet täyttöön löytyvät sieltä.
-HUOM!!!!!!!! Älä IKINÄ add, commit tai push omia käyttäjätietoja (käyttäjänimi ja/tai salasana). Testien jälkeen joko palautat tiedoston sen alkuperäiseen muotoon, tai jätä täytettävät kohdat tyhjäksi, mutta omia tietoja ei ikinä Gittiin tai Githubiin.
+```mermaid
+graph TD
 
-7. Kun olet täyttänyt kohdat test-request.http tiedostossa, Paina --> Send request
+subgraph Renovo - Käyttöliittymä
+   A[HTML/CSS/JS Käyttöliittymä] <--> B[JS Client logiikka]
+   B --> C[Pyyntö taustapalvelimelle]
+end
+
+subgraph Renovo - Taustapalvelin
+   C --> D[Taustapalvelimen logiikka]
+   D <--> E[Tietokannat]
+   D --> F[Vastaus käyttöliittymälle]
+   G[Staattinen tiedostopalvelin] --> A
+end
+
+subgraph Kubios HRV
+  H[Taustapalvelimen logiikka]
+  H --> I[Vastaus Renovo taustapalvelimelle]
+end
+
+F --> B
+D --> H
+I --> D
+```
+
+## Käytetyt tekniikat
+
+- Node.js
+- Express.js
+- MySQL / MariaDB
+- JWT Authentication
+- Docker
+- Cross- Origin Resource Sharing (CORS)
+- Apidoc
+
+## Taustapalvelimen asennus, riippuvuudet ja tietokannat
+
+Kloonaa repositorio:
+
+```bash
+git clone https://github.com/Rocmu/Renovo_be.git
+cd Renovo_be
+```
+
+Node moduulien ja riippuvuuksien asennus: `npm i` tai vaihtoehtoisesti `npm install`.
+
+Muut tarvittavat paketit ja niiden asennus:
+- Express.js: aja komento: `npm install express`
+- Cross- Origin Resource Sharing (CORS): `npm install cors`
+- Apidoc: `npm install apidoc`
+- MySQL2: `npm install --save mysql2`
+- JSON Web Token (JWT): `npm install jsonwebtoken`
+- bcrypt.js: `npm i bcryptjs`
+- express-validator: `npm install express-validator`
+- Dotenv: `npm i dotenv`
+- Nodemon: `npm install --save-dev nodemon`
+- Node Fetch: `npm install node-fetch`
+- Axios: `npm i axios`
+- UUID: `npm i uuid`
+
+Asenna ja käynnistä MySQL/MariaDB-palvelin.
+
+Tuo tietokanta osoitteesta:
+
+```bash
+source <reitti omalta koneelta>/database/renovo.sql
+```
+
+Anna itsellesi myös paikallisesti oikeudet tietokantaan. Ohjeet database/create-user-example.sql- tiedostossa.
+
+Luo `.env`-tiedosto `.env.sample`-tiedoston perusteella ja määritä muuttujat. Ohjeet [muuttujien määrittämiseen](https://github.com/mattpe/hyte-web-dev/blob/main/12-kubios.md) --> "Implement Login Using Kubios Cloud" --> "2. Add Kubios settings to `.env` file (and to .env-sample)".
+
+Client Id on kurssimateriaaleissa.
+
+Node-projektin ajaminen bashissa: `npm run dev`
+
+## Tietokanta rakenne
+
+Tietokannan rakenne on esitetty alla olevassa kuvassa (Kuva 1).
+
+![alt text](database/tietokanta.png)
+Kuva 1. Renovo- sovelluksen tietokannan rakenne ja riippuvuudet.
+
+Kuten kuvassa 1 näkyy, "Users"- taulukko on päätaulukko, jossa määritellään käyttäjät. Kaikki muut taulukot ovat siitä riippuvaisia. Taulukot on luotu vastaamaan ohjelmistolta vaadittuja toimintoja.
 
 ## Dokumentaatio
 
-npm install apidoc
+Kaikista API- pyynnöistä on tehty vaatimusten mukainen dokumentaatio. Ohessa on linkki dokumentaation ---> [Apidoc]()
+
+Dokumentaatio löytyy myös projektin tiedostoista src/documentation- kansiosta.
+
+## Tukimateriaali ja kunniamaininnat
+
+Sovelluksen rakentamisessa ollaan käytetty apuna opettajien tarjoamia [kurssimateriaaleja](https://github.com/mattpe/hyte-web-dev/blob/main/01-tools-env.md). Varsinkin Kubios pyynnöt on rakennettu [esimerkkikoodin](https://github.com/mattpe/hyte-web-dev/blob/main/12-kubios.md) perusteella. Materiaaleja ollaan sovellettu myös arkkitehtuurin kuvaajien piirtämisessä ja tiedon haussa.
+
+#### Suuret kiitokset [mattpe](https://github.com/mattpe), jonka koodin avulla rakennettiin API- pyyntöjä Kubios HRV:n!
+
+Kurssin ulkopuolinen materiaali:
+- Tutoriaali(t): [Youtube- Learn JavaScript DATE objects in 8 minutes!](https://www.youtube.com/watch?v=LwYwz67l1lA)
+- Muu hyödynnetty lukumateriaali: [W3Schools](https://www.w3schools.com/)
+
+## Bugit ja ongelmat
+
+Taustapalvelimessa ei ole havaittu toiminnallisia ongelmia.
+
+## Tekijät
+
+- Rocmu --> [Github](https://github.com/Rocmu)
+
+- Nappulat --> [Github](https://github.com/Nappulat)

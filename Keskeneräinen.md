@@ -9,7 +9,6 @@ Renovo sovelluksen tarkoitus on seurata käyttäjän hyvinvointia ja jaksamista 
 - [Asennus](#asennus)
 - [Tietokanta](#tietokanta)
 - [API-dokumentaatio](#api-documentation)
-- [Kuvakaappauksia](#kuvakaappauksia)
 - [Luojat](#contributors)
 
 ## Yleiskatsaus
@@ -66,15 +65,13 @@ npm run dev
 
 Tietokannan rakenne ja kuvaus:
 
-![alt text](Tietokanta.png)
+![alt text](database/tietokanta.png)
 
 
 ## API Documentaatio
 
-
-
-## Screenshots
-
-
+!Linkki apidokumentaatioon!
 
 ## Contributors
+
+Ryhmä 2
