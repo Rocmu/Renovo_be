@@ -5,58 +5,63 @@ import {customError} from '../middlewares/error-handler.js';
 // Kubios API base URL should be set in .env
 const baseUrl = process.env.KUBIOS_API_URI;
 
+/**
+* Set a date for Kubios data request
+* @sync
+* @param {Request} req Request Express request object.
+* @param {Response} res Express response object.
+* @param {NextFunction} next Next middleware function.
+* @return {String} A new date for data request.
+*/
 function setDate(days) {
 
     const date = new Date();
-    console.log('')
-    console.log('alkuperäinen päivä ' + date)
+    console.log('Current date ' + date)
     const year = date.getFullYear();
     const month = date.getMonth();
-    //const current_month = month + 1
     const day = date.getDate();
 
     const difference = day - days
 
-    //JOS difference ON NEGATIIVINEN
+    //If difference is below zero
     if (difference < 1) {
-        //PALATAANKO VIIME VUODELLE?
-        // JOS KYLLÄ
+        // If the date goes back to the previous year
         if (month == 0) {
-            //Edellinen vuosi, joulukuu, 10 tai 30 päivää sitten
-            console.log('Palataan edelliseen vuoteen')
+            //Previous year, December, 10 or 30 days ago
+            console.log('Return to the previous year.')
             date.setFullYear(year-1)
             date.setMonth(12)
             date.setDate(day-days)
         // JOS EI
         } else {
-            //Nykyinen vuosi, edellinen kuukausi, 10 tai 30 päivää sitten
+            //Current year, previous month, 10 or 30 days ago
             console.log('Palataan edelliseen kuukauteen')
             date.setFullYear(year)
             date.setMonth(month)
             date.setDate(day-days)
         }
-    //JOS difference ON POSITIIVINEN
+    //If difference is positive
     } else {
-        //Nykyinen vuosi, nykyinen kuukausi, 10 tai 30 päivää sitten
+        //Current year, current month, 10 or 30 days ago
         console.log('Pysytään tässä kuukaudessa')
         date.setFullYear(year)
         date.setMonth(month)
         date.setDate(day-days)
     };
 
-    console.log('Uusi: ' + date)
+    console.log('New date: ' + date)
     const print = date.toISOString();
     const getDays = print.slice(0, 11)
     return getDays;
 };
 
 /**
-* Get user data from Kubios API example
-* TODO: Implement error handling
+* Get user data from the past 10 days Kubios API example
 * @async
-* @param {Request} req Request object including Kubios id token
-* @param {Response} res
-* @param {NextFunction} next
+* @param {Request} req Request Express request object.
+* @param {Response} res Express response object.
+* @param {NextFunction} next Next middleware function.
+* @return {Promise<Object>} JSON response with data array or error.
 */
 const getDataTen = async (req, res, next) => {
   const {kubiosIdToken} = req.user;
@@ -118,6 +123,14 @@ const getDataTen = async (req, res, next) => {
   }
 };
 
+/**
+* Get user data from the past 30 days Kubios API example
+* @async
+* @param {Request} req Request Express request object.
+* @param {Response} res Express response object.
+* @param {NextFunction} next Next middleware function.
+* @return {Promise<Object>} JSON response with data array or error.
+*/
 const getDataThirty = async (req, res, next) => {
   const {kubiosIdToken} = req.user;
   const headers = new Headers();

@@ -9,11 +9,11 @@ const baseUrl = process.env.KUBIOS_API_URI;
 
 /**
 * Check if patient monitoring is over, and all data will be saved to database.
-* TODO: Complete error handling
 * @async
 * @param {Request} req Request object including Kubios id token
-* @param {Response} res
-* @param {NextFunction} next
+* @param {Response} res Kubios table status
+* @param {NextFunction} next Next middleware function.
+* @return {Promise<Object>} JSON response with success message or error.
 */
 
 const getUserData = async (req, res, next) => {
@@ -23,10 +23,10 @@ const getUserData = async (req, res, next) => {
   headers.append('User-Agent', process.env.KUBIOS_USER_AGENT);
   headers.append('Authorization', kubiosIdToken);
 
-  //ENSIN KATSOTAAN ONKO KUBIOS TAULUKKO ON TYHJÄ
+  //Check if Kubios- table in database is empty
   const kubiosSatus = await checkKubios(req.params.id)
 
-  //JOS TAULUKKO ON TYHJÄ
+  //If empty
   if (kubiosSatus.error == 404) {
     console.log(kubiosSatus.error)
     try {
@@ -43,10 +43,9 @@ const getUserData = async (req, res, next) => {
       const date = print.slice(0, 11)
       console.log(date + ' menee funktiolle')
 
-      //KATSOO ONKO PROFIILI OLLUT OLEMASSA 30 PÄIVÄÄ TAI YLI
+      //Check if the profile has existed either 30 days or longer
       if (inDays >= 30) {
-        console.log('päästään tänne')
-        //JOS PÄIVÄT OVAT YLI/TASAN 30
+        //If the profile's lifespan is over/equal to 30 days
         try {
           const response = await fetch(
             baseUrl + `/result/self?from=${date}00%3A00%3A00%2B00%3A00`,
@@ -68,7 +67,7 @@ const getUserData = async (req, res, next) => {
               bpm : Math.round(results.results[i].result.mean_hr_bpm)
             }
             const insertEntry = await createKubiosEntry(req.params.id, newKubios);
-            console.log('Meni läpi' + insertEntry)
+            console.log('New Kubios entry' + insertEntry)
           }
           return res.json(
             {
@@ -81,7 +80,7 @@ const getUserData = async (req, res, next) => {
           return next(customError('Kubios fetch failed.', 400));
         }
       }
-      //JOS PÄIVÄT OVAT ALLE 30
+      //If the profile has existed less than 30 days
       return res.json(
         {message: 'Seuranta-aika aktiivinen.',
         user: userCreated,
@@ -93,7 +92,7 @@ const getUserData = async (req, res, next) => {
       return next(customError('User not found.', 404));
     }
   } else {
-    //TAULUKKO EI OLE TYHJÄ JA LOPULLINEN TALLENNUS ON JO TEHTY
+    //If table is not empty, the HRV data has already been saved.
     return res.json(
       {message: 'Seuranta-aika on ohi.',
        data_saved: kubiosSatus.created_at

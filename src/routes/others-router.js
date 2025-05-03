@@ -8,14 +8,14 @@ import {
   deleteOthers,
 } from '../controllers/others-controller.js';
 import { body } from 'express-validator';
-import { /*errorHandler,*/ validationErrorHandler } from '../middlewares/error-handler.js';
+import { validationErrorHandler } from '../middlewares/error-handler.js';
 import { authenticateToken } from '../middlewares/authentication.js';
 
 const othersRouter = express.Router();
 
 othersRouter
   .route('/')
-  .get(authenticateToken, getOthers/*, errorHandler*/)
+  .get(authenticateToken, getOthers)
   .post(
     authenticateToken,
     body('user_id').isInt(),
@@ -24,17 +24,16 @@ othersRouter
     body('intensity').isIn(['Low', 'Medium', 'High']),
     body('notes').trim().escape().isString().optional({ nullable: true }),
     validationErrorHandler,
-    postOthers,
-    /*errorHandler*/
+    postOthers
   );
 
 othersRouter
   .route('/user/:id')
-  .get(authenticateToken, getOthersByUserId/*, errorHandler*/);
+  .get(authenticateToken, getOthersByUserId);
 
 othersRouter
   .route('/:id')
-  .get(authenticateToken, getOthersById/*, errorHandler*/)
+  .get(authenticateToken, getOthersById)
   .put(
     authenticateToken,
     body('user_id').isInt(),
@@ -43,9 +42,8 @@ othersRouter
     body('intensity').isIn(['Low', 'Medium', 'High']),
     body('notes').trim().escape().isString().optional({ nullable: true }),
     validationErrorHandler,
-    putOthers,
-    /*errorHandler*/
+    putOthers
   )
-  .delete(authenticateToken, deleteOthers/*, errorHandler*/);
+  .delete(authenticateToken, deleteOthers);
 
 export default othersRouter;

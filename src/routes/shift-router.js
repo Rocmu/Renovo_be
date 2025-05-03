@@ -8,14 +8,14 @@ import {
   deleteShift,
 } from '../controllers/shift-controller.js';
 import { body } from 'express-validator';
-import { /*errorHandler,*/ validationErrorHandler } from '../middlewares/error-handler.js';
+import { validationErrorHandler } from '../middlewares/error-handler.js';
 import { authenticateToken } from '../middlewares/authentication.js';
 
 const shiftRouter = express.Router();
 
 shiftRouter
   .route('/')
-  .get(authenticateToken, getShifts/*, errorHandler*/)
+  .get(authenticateToken, getShifts)
   .post(
     authenticateToken,
     body('user_id').isInt(),
@@ -24,17 +24,16 @@ shiftRouter
     body('end_time').isString().optional({ nullable: true }),
     body('end_date').isDate().optional({ nullable: true }),
     validationErrorHandler,
-    postShift,
-    /*errorHandler*/
+    postShift
   );
 
 shiftRouter
   .route('/user/:id')
-  .get(authenticateToken, getShiftsByUserId/*, errorHandler*/);
+  .get(authenticateToken, getShiftsByUserId);
 
 shiftRouter
   .route('/:id')
-  .get(authenticateToken, getShiftById/*, errorHandler*/)
+  .get(authenticateToken, getShiftById)
   .put(
     authenticateToken,
     body('user_id').isInt(),
@@ -43,9 +42,8 @@ shiftRouter
     body('end_time').isString().optional({ nullable: true }),
     body('end_date').isDate().optional({ nullable: true }),
     validationErrorHandler,
-    putShift,
-    /*errorHandler*/
+    putShift
   )
-  .delete(authenticateToken, deleteShift/*, errorHandler*/);
+  .delete(authenticateToken, deleteShift);
 
 export default shiftRouter;

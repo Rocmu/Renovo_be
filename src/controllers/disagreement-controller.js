@@ -8,7 +8,13 @@ import {
 } from '../models/disagreement-model.js';
 import { validationResult } from 'express-validator';
 
-//Get all disagreements.
+/**
+* Get all disagreements.
+* @async
+* @param {Response} res Express response object.
+* @param {NextFunction} next Next middleware function.
+* @return {Promise<Object>} JSON response with disagreements array or error.
+*/
 const getDisagreements = async (req, res, next) => {
   try {
     const result = await listAllDisagreements();
@@ -23,7 +29,14 @@ const getDisagreements = async (req, res, next) => {
   }
 };
 
-//Get all user's disagreements by user ID.
+/**
+* Get all user's disagreements by user ID.
+* @async
+* @param {Object} req Express request object (contains params.id).
+* @param {Object} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with disagreements array or error.
+*/
 const getDisagreementsByUserId = async (req, res, next) => {
   try {
     const result = await listDisagreementsByUserId(req.params.id);
@@ -38,7 +51,14 @@ const getDisagreementsByUserId = async (req, res, next) => {
   }
 };
 
-//Get disagreement by ID.
+/**
+* Get disagreement by disagreement ID.
+* @async
+* @param {Object} req Express request object (contains params.id).
+* @param {Object} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with disagreement object or error.
+*/
 const getDisagreementById = async (req, res, next) => {
   try {
     const result = await selectDisagreementById(req.params.id);
@@ -53,7 +73,14 @@ const getDisagreementById = async (req, res, next) => {
   }
 };
 
-//Create new disagreement (validate first).
+/**
+* Create new disagreement if validation passed.
+* @async
+* @param {Request} req Express request object (contains body object).
+* @param {Response} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with success message and ID or error.
+*/
 const postDisagreement = async (req, res, next) => {
   const validationErrors = validationResult(req);
   if (!validationErrors.isEmpty()) {
@@ -76,7 +103,14 @@ const postDisagreement = async (req, res, next) => {
   }
 };
 
-//Update existing disagreement (validate first).
+/**
+* Update a pre-existing disagreement entry if validation passed.
+* @async
+* @param {Object} req Express request object (contains params.id and body object).
+* @param {Object} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with success message or error.
+*/
 const putDisagreement = async (req, res, next) => {
   const validationErrors = validationResult(req);
   if (!validationErrors.isEmpty()) {
@@ -99,7 +133,14 @@ const putDisagreement = async (req, res, next) => {
   }
 };
 
-//Delete disagreement by ID.
+/**
+* Delete an existing disagreement entry by ID.
+* @async
+* @param {Object} req Express request object (contains params.id).
+* @param {Object} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with success message or error.
+*/
 const deleteDisagreement = async (req, res, next) => {
   try {
     const result = await deleteDisagreementById(req.params.id);

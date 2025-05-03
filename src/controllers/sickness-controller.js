@@ -8,7 +8,13 @@ import {
 } from '../models/sickness-model.js';
 import { validationResult } from 'express-validator';
 
-//Get all sickness records (uses listAllSicknesses model).
+/**
+ * Get all sickness entries.
+ * @param {Request} req Express request object.
+ * @param {Response} res Express response object.
+ * @param {NextFunction} next Next middleware function.
+ * @return {Promise<Object>} JSON response with sickness array or error.
+ */
 const getSicknesses = async (req, res, next) => {
   try {
     const result = await listAllSicknesses();
@@ -23,7 +29,13 @@ const getSicknesses = async (req, res, next) => {
   }
 };
 
-//Get all user's sickness records by user ID.
+/**
+ * Get all user's sickness entries by user ID.
+ * @param {Object} req Express request object (contains params.id).
+ * @param {Object} res Express response object.
+ * @param {Function} next Next middleware function.
+ * @return {Promise<Object>} JSON response with sickness array or error.
+ */
 const getSicknessesByUserId = async (req, res, next) => {
   try {
     const result = await listSicknessesByUserId(req.params.id);
@@ -38,7 +50,13 @@ const getSicknessesByUserId = async (req, res, next) => {
   }
 };
 
-//Get sickness record by ID.
+/**
+ * Get sickness entry by sickness ID.
+ * @param {Object} req Express request object (contains params.id).
+ * @param {Object} res Express response object.
+ * @param {Function} next Next middleware function.
+ * @return {Promise<Object>} JSON response with sickness object or error.
+ */
 const getSicknessById = async (req, res, next) => {
   try {
     const result = await selectSicknessById(req.params.id);
@@ -53,7 +71,13 @@ const getSicknessById = async (req, res, next) => {
   }
 };
 
-//Create new sickness record (validate first).
+/**
+ * Create new sickness entry if validation passed.
+ * @param {Request} req Express request object (contains body object).
+ * @param {Response} res Express response object.
+ * @param {Function} next Next middleware function.
+ * @return {Promise<Object>} JSON response with success message and ID or error.
+ */
 const postSickness = async (req, res, next) => {
   const validationErrors = validationResult(req);
   if (!validationErrors.isEmpty()) {
@@ -76,7 +100,13 @@ const postSickness = async (req, res, next) => {
   }
 };
 
-//Update existing sickness record (validate first).
+/**
+ * Update an existing sickness entry if validation passed.
+ * @param {Object} req Express request object (contains params.id and body object).
+ * @param {Object} res Express response object.
+ * @param {Function} next Next middleware function.
+ * @return {Promise<Object>} JSON response with success message or error.
+ */
 const putSickness = async (req, res, next) => {
   const validationErrors = validationResult(req);
   if (!validationErrors.isEmpty()) {
@@ -99,7 +129,13 @@ const putSickness = async (req, res, next) => {
   }
 };
 
-//Delete sickness record by ID.
+/**
+ * Delete an existing sickness entry by ID.
+ * @param {Object} req Express request object (contains params.id).
+ * @param {Object} res Express response object.
+ * @param {Function} next Next middleware function.
+ * @return {Promise<Object>} JSON response with success message or error.
+ */
 const deleteSickness = async (req, res, next) => {
   try {
     const result = await deleteSicknessById(req.params.id);

@@ -8,7 +8,14 @@ import {
 } from '../models/others-model.js';
 import { validationResult } from 'express-validator';
 
-//Get all others records (uses listAllOthers model).
+/**
+* Get all others records.
+* @async
+* @param {Request} req Express request object.
+* @param {Response} res Express response object.
+* @param {NextFunction} next Next middleware function.
+* @return {Promise<Object>} JSON response with others array or error.
+*/
 const getOthers = async (req, res, next) => {
   try {
     const result = await listAllOthers();
@@ -23,7 +30,14 @@ const getOthers = async (req, res, next) => {
   }
 };
 
-//Get all user's others records by user ID.
+/**
+* Get all user's others records by user ID.
+* @async
+* @param {Object} req Express request object (contains params.id).
+* @param {Object} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with others array or error.
+*/
 const getOthersByUserId = async (req, res, next) => {
   try {
     const result = await listOthersByUserId(req.params.id);
@@ -38,7 +52,14 @@ const getOthersByUserId = async (req, res, next) => {
   }
 };
 
-//Get others record by ID.
+/**
+* Get others record by others ID.
+* @async
+* @param {Object} req Express request object (contains params.id).
+* @param {Object} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with others object or error.
+*/
 const getOthersById = async (req, res, next) => {
   try {
     const result = await selectOthersById(req.params.id);
@@ -53,7 +74,14 @@ const getOthersById = async (req, res, next) => {
   }
 };
 
-//Create new others record (validate first).
+/**
+* Create new others entry if validation passed.
+* @async
+* @param {Request} req Express request object (contains body object).
+* @param {Response} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with success message and ID or error.
+*/
 const postOthers = async (req, res, next) => {
   const validationErrors = validationResult(req);
   if (!validationErrors.isEmpty()) {
@@ -76,7 +104,14 @@ const postOthers = async (req, res, next) => {
   }
 };
 
-//Update existing others record (validate first).
+/**
+* Update a pre-existing others entry if validation passed.
+* @async
+* @param {Object} req Express request object (contains params.id and body object).
+* @param {Object} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with success message or error.
+*/
 const putOthers = async (req, res, next) => {
   const validationErrors = validationResult(req);
   if (!validationErrors.isEmpty()) {
@@ -99,7 +134,14 @@ const putOthers = async (req, res, next) => {
   }
 };
 
-//Delete others record by ID.
+/**
+* Delete an existing others entry by ID.
+* @async
+* @param {Object} req Express request object (contains params.id).
+* @param {Object} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with success message or error.
+*/
 const deleteOthers = async (req, res, next) => {
   try {
     const result = await deleteOthersById(req.params.id);

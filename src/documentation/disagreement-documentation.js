@@ -85,7 +85,7 @@
  */
 
  /**
- * @api {get} disagreement/user/:id Request all sickness entries from a specific user
+ * @api {get} /disagreement/user/:id Request all disagreement entries from a specific user
  * @apiName getDisagreementsByUserId
  * @apiGroup Disagreement
  * @apiPermission token
@@ -122,7 +122,7 @@
  */
 
  /**
- * @api {get} disagreement/:id Request a specific disagreement entry
+ * @api {get} /disagreement/:id Request a specific disagreement entry
  * @apiName getDisagreementById
  * @apiGroup Disagreement
  * @apiPermission token
@@ -163,7 +163,7 @@
  */
 
  /**
- * @api {put} disagreement/:id Update a specific disagreement entry
+ * @api {put} /disagreement/:id Update a specific disagreement entry
  * @apiName putDisagreement
  * @apiGroup Disagreement
  * @apiPermission token
@@ -206,7 +206,7 @@
  */
 
  /**
- * @api {delete} disagreement/:id Delete a disagreement entry from user
+ * @api {delete} /disagreement/:id Delete a disagreement entry from user
  * @apiName deleteDisagreement
  * @apiGroup Disagreement
  * @apiPermission token

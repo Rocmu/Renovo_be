@@ -8,7 +8,14 @@ import {
 } from '../models/exercise-model.js';
 import { validationResult } from 'express-validator';
 
-//Get all exercises
+/**
+* Get all exercises.
+* @async
+* @param {Request} req Express request object.
+* @param {Response} res Express response object.
+* @param {NextFunction} next Next middleware function.
+* @return {Promise<Object>} JSON response with exercises array or error.
+*/
 const getExercises = async (req, res, next) => {
   try {
     const result = await listAllExercises();
@@ -23,7 +30,14 @@ const getExercises = async (req, res, next) => {
   }
 };
 
-//Get all user's exercises by user ID.
+/**
+* Get all user's exercises by user ID.
+* @async
+* @param {Object} req Express request object (contains params.id).
+* @param {Object} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with exercises array or error.
+*/
 const getExercisesByUserId = async (req, res, next) => {
   try {
     const result = await listExercisesByUserId(req.params.id);
@@ -38,7 +52,14 @@ const getExercisesByUserId = async (req, res, next) => {
   }
 };
 
-//Get exercise by ID.
+/**
+* Get exercise by exercise ID.
+* @async
+* @param {Object} req Express request object (contains params.id).
+* @param {Object} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with exercise object or error.
+*/
 const getExerciseById = async (req, res, next) => {
   try {
     const result = await selectExerciseById(req.params.id);
@@ -53,7 +74,14 @@ const getExerciseById = async (req, res, next) => {
   }
 };
 
-//Create new exercise (validate first).
+/**
+* Create new exercise if validation passed.
+* @async
+* @param {Request} req Express request object (contains body object).
+* @param {Response} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with success message and ID or error.
+*/
 const postExercise = async (req, res, next) => {
   const validationErrors = validationResult(req);
   if (!validationErrors.isEmpty()) {
@@ -76,7 +104,14 @@ const postExercise = async (req, res, next) => {
   }
 };
 
-//Update existing exercise (validate first).
+/**
+* Update a pre-existing exercise entry if validation passed.
+* @async
+* @param {Object} req Express request object (contains params.id and body object).
+* @param {Object} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with success message or error.
+*/
 const putExercise = async (req, res, next) => {
   const validationErrors = validationResult(req);
   if (!validationErrors.isEmpty()) {
@@ -99,7 +134,14 @@ const putExercise = async (req, res, next) => {
   }
 };
 
-//Delete exercise by ID.
+/**
+* Delete an existing exercise entry by ID.
+* @async
+* @param {Object} req Express request object (contains params.id).
+* @param {Object} res Express response object.
+* @param {Function} next Next middleware function.
+* @return {Promise<Object>} JSON response with success message or error.
+*/
 const deleteExercise = async (req, res, next) => {
   try {
     const result = await deleteExerciseById(req.params.id);
