@@ -151,7 +151,7 @@ Kaikista API- pyynnöistä on tehty vaatimusten mukainen dokumentaatio. Ohessa o
 
 Dokumentaatio löytyy myös projektin tiedostoista src/documentation- kansiosta.
 
-## Tukimateriaali ja kunniamaininnat
+## Tukimateriaali ja maininnat
 
 Sovelluksen rakentamisessa ollaan käytetty apuna opettajien tarjoamia [kurssimateriaaleja](https://github.com/mattpe/hyte-web-dev/blob/main/01-tools-env.md). Varsinkin Kubios pyynnöt on rakennettu [esimerkkikoodin](https://github.com/mattpe/hyte-web-dev/blob/main/12-kubios.md) perusteella. Materiaaleja ollaan sovellettu myös arkkitehtuurin kuvaajien piirtämisessä ja tiedon haussa.
 
