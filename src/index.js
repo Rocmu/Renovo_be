@@ -25,7 +25,7 @@ const __dirname = path.dirname(__filename);
 
 // SPA fallback
 app.get('*', (req, res, next) => {
-  if (req.path.startsWith('/api')) return next(); // Älä ohita API-pyyntöjä
+  if (req.path.startsWith('/api')) return next();
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
