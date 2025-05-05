@@ -148,7 +148,7 @@ Kuten kuvassa 1 näkyy, "Users"- taulukko on päätaulukko, jossa määritellä�
 
 ## Dokumentaatio
 
-Kaikista API- pyynnöistä on tehty vaatimusten mukainen dokumentaatio. Ohessa on linkki dokumentaation ---> [Apidoc]()
+Kaikista API- pyynnöistä on tehty vaatimusten mukainen dokumentaatio. Ohessa on linkki dokumentaation ---> [Apidoc](https://thehyte.northeurope.cloudapp.azure.com/api/)
 
 Dokumentaatio löytyy myös projektin tiedostoista src/documentation- kansiosta.
 
