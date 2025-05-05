@@ -95,7 +95,7 @@
  */
 
  /**
- * @api {get} others/user/:id Request all others entries from a specific user
+ * @api {get} /others/user/:id Request all others entries from a specific user
  * @apiName getOthersByUserId
  * @apiGroup Others
  * @apiPermission token
@@ -138,7 +138,7 @@
  */
 
  /**
- * @api {get} others/:id Request a specific others entry
+ * @api {get} /others/:id Request a specific others entry
  * @apiName getOthersById
  * @apiGroup Others
  * @apiPermission token
@@ -185,7 +185,7 @@
  */
 
  /**
- * @api {put} others/:id Update a specific others entry
+ * @api {put} /others/:id Update a specific others entry
  * @apiName putOthers
  * @apiGroup Others
  * @apiPermission token
@@ -231,13 +231,13 @@
  */
 
  /**
- * @api {delete} exercise/:id Delete an exercise entry from user
- * @apiName deleteExercise
- * @apiGroup Exercise
+ * @api {delete} /others/:id Delete an others entry from user
+ * @apiName deleteOthers
+ * @apiGroup Others
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {Number} id Exercise entry's unique ID.
+ * @apiParam {Number} id Other entry's unique ID.
  *
  * @apiSuccess {String} message Result of the request
  *

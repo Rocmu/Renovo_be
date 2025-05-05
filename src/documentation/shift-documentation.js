@@ -237,14 +237,14 @@
  * @apiPermission token
  * @apiheader {String} Authorization Bearer token
  *
- * @apiParam {Number} id Shit's unique ID.
+ * @apiParam {Number} id Shift's unique ID.
  *
  * @apiSuccess {String} message Result of the request
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "message": "Shift deleted.",
+ *       "message": "Shift deleted",
  *       "shift_id": "1",
  *      }
  *

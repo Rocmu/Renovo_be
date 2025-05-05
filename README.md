@@ -9,7 +9,8 @@ Renovo sovelluksen tarkoitus on seurata käyttäjän hyvinvointia ja jaksamista 
 - [Käytetyt tekniikat](#käytetyt-tekniikat)
 - [Taustapalvelimen asennus, riippuvuudet ja tietokannat](#taustapalvelimen-asennus-riippuvuudet-ja-tietokannat)
 - [Tietokanta rakenne](#tietokanta-rakenne)
-- [API-dokumentaatio](#api-documentation)
+- [Dokumentaatio](#dokumentaatio)
+- [Ei- implementoidut toiminnot](#ei--implementoidut-toiminnot)
 - [Tukimateriaali ja kunniamaininnat](#tukimateriaali-ja-kunniamaininnat)
 - [Bugit ja ongelmat](#bugit-ja-ongelmat)
 - [Tekijät](#tekijät)
@@ -150,6 +151,24 @@ Kuten kuvassa 1 näkyy, "Users"- taulukko on päätaulukko, jossa määritellä�
 Kaikista API- pyynnöistä on tehty vaatimusten mukainen dokumentaatio. Ohessa on linkki dokumentaation ---> [Apidoc]()
 
 Dokumentaatio löytyy myös projektin tiedostoista src/documentation- kansiosta.
+
+## Ei- implementoidut toiminnot
+
+Suunnitelmissa oli kehittää sovelluksesta näkymät usealle eri käyttäjätyypille. Tämän toiveen puitteissa taustapalvelimelle kehitettiin myös pyyntöjä, joihin vain tietyillä käyttäjillä on oikeudet. Valitettavasti aikataulun puitteissa ehditiin toteuttaa vain peruskäyttäjän näkymä käyttöliittymässä.
+
+Jatkokehitystä varten kaikki luodut pyynnöt jätettiin taustapalvelimeen valmiiksi. Muutamaa ei vain suoriteta käyttöliittymän puolelta. Sovelluskehityksessä myös tehtiin muutoksia esimerkiksi käyttäjän kykyyn muokata antamaansa palautetta. Kaikki valmiiksi tehdyt pyynnöt, joita ei käytetty Client- puolella on lueteltu ohessa.
+
+### Ei- implementoidut pyynnöt:
+- Kaikkien tietokannasta löytyvien työvuoromerkintöjen tulostus pyyntö (nimi: getShifts)
+- Kaikkien tietokannasta löytyvien liikuntamerkintöjen tulostus pyyntö (nimi: getExercises)
+- Kaikkien tietokannasta löytyvien sairausmerkintöjen tulostus pyyntö (nimi: getSicknesses)
+- Kaikkien tietokannasta löytyvien "muu"- merkintöjen tulostus pyyntö (nimi: getOthers)
+- Kaikkien tietokannasta löytyvien  palautteiden tulostus pyyntö (nimi: getDisagreements)
+- Tietyn palautteen tulostus pyyntö (nimi: getDisagreementById)
+- Tietyn palautteen muokkaus pyyntö (nimi: putDisagreement)
+- Tietyn palautteen poisto pyyntö (nimi: deleteDisagreement)
+
+Kaikki luetellut pyynnöt ovat täysin toimintakelpoisia, vaikka niitä ei käytetty sovelluksen tämänhetkisessä versiossa. Ei- implementoidut pyynnöt löytyvät myös [dokumentaatiosta](#dokumentaatio).
 
 ## Tukimateriaali ja maininnat
 

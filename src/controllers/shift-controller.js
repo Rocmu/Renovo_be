@@ -9,11 +9,11 @@ import {
 import { validationResult } from 'express-validator';
 
 /**
- * Get all shifts (uses listAllShifts model).
- * @param {Object} req - Express request object.
- * @param {Object} res - Express response object.
- * @param {Function} next - Next middleware function.
- * @returns {Promise<Object>} JSON response with shifts array or error.
+ * Get all shifts.
+ * @param {Request} req Express request object.
+ * @param {Response} res Express response object.
+ * @param {NextFunction} next Next middleware function.
+ * @return {Promise<Object>} JSON response with shifts array or error.
  */
 const getShifts = async (req, res, next) => {
   try {
@@ -30,11 +30,11 @@ const getShifts = async (req, res, next) => {
 };
 
 /**
- * Get all users shifts by user ID.
- * @param {Object} req - Express request object (contains params.id).
- * @param {Object} res - Express response object.
- * @param {Function} next - Next middleware function.
- * @returns {Promise<Object>} JSON response with shifts array or error.
+ * Get all user's shifts by user ID.
+ * @param {Object} req Express request object (contains params.id).
+ * @param {Object} res Express response object.
+ * @param {Function} next Next middleware function.
+ * @return {Promise<Object>} JSON response with shifts array or error.
  */
 const getShiftsByUserId = async (req, res, next) => {
   try {
@@ -51,11 +51,11 @@ const getShiftsByUserId = async (req, res, next) => {
 };
 
 /**
- * Get shift by ID.
- * @param {Object} req - Express request object (contains params.id).
- * @param {Object} res - Express response object.
- * @param {Function} next - Next middleware function.
- * @returns {Promise<Object>} JSON response with shift object or error.
+ * Get shift by shift ID.
+ * @param {Object} req Express request object (contains params.id).
+ * @param {Object} res Express response object.
+ * @param {Function} next Next middleware function.
+ * @return {Promise<Object>} JSON response with shift object or error.
  */
 const getShiftById = async (req, res, next) => {
   try {
@@ -72,11 +72,11 @@ const getShiftById = async (req, res, next) => {
 };
 
 /**
- * Create new shift (validate first).
- * @param {Object} req - Express request object (contains body object).
- * @param {Object} res - Express response object.
- * @param {Function} next - Next middleware function.
- * @returns {Promise<Object>} JSON response with success message and ID or error.
+ * Create new shift if validation passed.
+ * @param {Request} req Express request object (contains body object).
+ * @param {Response} res Express response object.
+ * @param {Function} next Next middleware function.
+ * @return {Promise<Object>} JSON response with success message and ID or error.
  */
 const postShift = async (req, res, next) => {
   const validationErrors = validationResult(req);
@@ -101,11 +101,11 @@ const postShift = async (req, res, next) => {
 };
 
 /**
- * Update existing shift (validate first).
- * @param {Object} req - Express request object (contains params.id and body object).
- * @param {Object} res - Express response object.
- * @param {Function} next - Next middleware function.
- * @returns {Promise<Object>} JSON response with success message or error.
+ * Update an existing shift entry if validation passed.
+ * @param {Object} req Express request object (contains params.id and body object).
+ * @param {Object} res Express response object.
+ * @param {Function} next Next middleware function.
+ * @return {Promise<Object>} JSON response with success message or error.
  */
 const putShift = async (req, res, next) => {
   const validationErrors = validationResult(req);
@@ -130,11 +130,11 @@ const putShift = async (req, res, next) => {
 };
 
 /**
- * Delete shift by ID.
- * @param {Object} req - Express request object (contains params.id).
- * @param {Object} res - Express response object.
- * @param {Function} next - Next middleware function.
- * @returns {Promise<Object>} JSON response with success message or error.
+ * Delete an existing shift entry by ID.
+ * @param {Object} req Express request object (contains params.id).
+ * @param {Object} res Express response object.
+ * @param {Function} next Next middleware function.
+ * @return {Promise<Object>} JSON response with success message or error.
  */
 const deleteShift = async (req, res, next) => {
   try {

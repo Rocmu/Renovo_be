@@ -95,7 +95,7 @@
  */
 
  /**
- * @api {get} sickness/user/:id Request all sickness entries from a specific user
+ * @api {get} /sickness/user/:id Request all sickness entries from a specific user
  * @apiName getSicknessesByUserId
  * @apiGroup Sickness
  * @apiPermission token
@@ -138,7 +138,7 @@
  */
 
  /**
- * @api {get} sickness/:id Request a specific sickness entry
+ * @api {get} /sickness/:id Request a specific sickness entry
  * @apiName getSicknessById
  * @apiGroup Sickness
  * @apiPermission token
@@ -185,7 +185,7 @@
  */
 
  /**
- * @api {put} sickness/:id Update a specific sickness entry
+ * @api {put} /sickness/:id Update a specific sickness entry
  * @apiName putSickness
  * @apiGroup Sickness
  * @apiPermission token
@@ -231,7 +231,7 @@
  */
 
  /**
- * @api {delete} sickness/:id Delete a sickness entry from user
+ * @api {delete} /sickness/:id Delete a sickness entry from user
  * @apiName deleteSickness
  * @apiGroup Sickness
  * @apiPermission token

@@ -8,14 +8,14 @@ import {
   deleteSickness,
 } from '../controllers/sickness-controller.js';
 import { body } from 'express-validator';
-import { /*errorHandler,*/ validationErrorHandler } from '../middlewares/error-handler.js';
+import { validationErrorHandler } from '../middlewares/error-handler.js';
 import { authenticateToken } from '../middlewares/authentication.js';
 
 const sicknessRouter = express.Router();
 
 sicknessRouter
   .route('/')
-  .get(authenticateToken, getSicknesses/*, errorHandler*/)
+  .get(authenticateToken, getSicknesses)
   .post(
     authenticateToken,
     body('user_id').isInt(),
@@ -24,17 +24,16 @@ sicknessRouter
     body('impact').isIn(['Low', 'Medium', 'High']),
     body('notes').trim().escape().isString().optional({ nullable: true }),
     validationErrorHandler,
-    postSickness,
-    /*errorHandler*/
+    postSickness
   );
 
 sicknessRouter
   .route('/user/:id')
-  .get(authenticateToken, getSicknessesByUserId/*, errorHandler*/);
+  .get(authenticateToken, getSicknessesByUserId);
 
 sicknessRouter
   .route('/:id')
-  .get(authenticateToken, getSicknessById/*, errorHandler*/)
+  .get(authenticateToken, getSicknessById)
   .put(
     authenticateToken,
     body('user_id').isInt(),
@@ -43,9 +42,8 @@ sicknessRouter
     body('impact').isIn(['Low', 'Medium', 'High']),
     body('notes').trim().escape().isString().optional({ nullable: true }),
     validationErrorHandler,
-    putSickness,
-    /*errorHandler*/
+    putSickness
   )
-  .delete(authenticateToken, deleteSickness/*, errorHandler*/);
+  .delete(authenticateToken, deleteSickness);
 
 export default sicknessRouter;

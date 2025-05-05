@@ -13,13 +13,12 @@
 
 import 'dotenv/config';
 import jwt from 'jsonwebtoken';
-import fetch from 'node-fetch'; // npm install node-fetch <--- ASENNA BASHISSA!!!
-import {v4} from 'uuid'; // npm install axios uuid <--- ASENNA BASHISSA!!!
+import fetch from 'node-fetch';
+import {v4} from 'uuid';
 import {customError} from '../middlewares/error-handler.js';
 import {
   insertUser,
   selectUserByEmail,
-  selectUserById,
 } from '../models/user-model.js';
 
 // Kubios API base URL should be set in .env
@@ -165,16 +164,4 @@ const postLogin = async (req, res, next) => {
   }
 };
 
-/**
-* Get user info based on token
-* @async
-* @param {object} req
-* @param {object} res
-* @return {object} user info
-*/
-const getMe = async (req, res) => {
-  const user = await selectUserById(req.user.userId);
-  res.json({user, kubios_token: req.user.kubiosIdToken});
-};
-
-export {postLogin, getMe};
+export {postLogin};

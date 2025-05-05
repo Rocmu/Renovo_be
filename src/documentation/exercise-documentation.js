@@ -101,7 +101,7 @@
  */
 
  /**
- * @api {get} exercise/user/:id Request all exercise entries from a specific user
+ * @api {get} /exercise/user/:id Request all exercise entries from a specific user
  * @apiName getExercisesByUserId
  * @apiGroup Exercise
  * @apiPermission token
@@ -148,7 +148,7 @@
  */
 
  /**
- * @api {get} exercise/:id Request a specific exercise entry
+ * @api {get} /exercise/:id Request a specific exercise entry
  * @apiName getExerciseById
  * @apiGroup Exercise
  * @apiPermission token
@@ -199,7 +199,7 @@
  */
 
  /**
- * @api {put} exercise/:id Update a specific exercise entry
+ * @api {put} /exercise/:id Update a specific exercise entry
  * @apiName putExercise
  * @apiGroup Exercise
  * @apiPermission token
@@ -247,7 +247,7 @@
  */
 
  /**
- * @api {delete} exercise/:id Delete an exercise entry from user
+ * @api {delete} /exercise/:id Delete an exercise entry from user
  * @apiName deleteExercise
  * @apiGroup Exercise
  * @apiPermission token

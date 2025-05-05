@@ -8,38 +8,36 @@ import {
   deleteDisagreement,
 } from '../controllers/disagreement-controller.js';
 import { body } from 'express-validator';
-import { /*errorHandler,*/ validationErrorHandler } from '../middlewares/error-handler.js';
+import { validationErrorHandler } from '../middlewares/error-handler.js';
 import { authenticateToken } from '../middlewares/authentication.js';
 
 const disagreementRouter = express.Router();
 
 disagreementRouter
   .route('/')
-  .get(authenticateToken, getDisagreements, /*errorHandler*/)
+  .get(authenticateToken, getDisagreements)
   .post(
     authenticateToken,
     body('user_id').isInt(),
     body('notes').trim().escape().isString().optional({ nullable: true }),
     validationErrorHandler,
-    postDisagreement,
-    /*errorHandler*/
+    postDisagreement
   );
 
 disagreementRouter
   .route('/user/:id')
-  .get(authenticateToken, getDisagreementsByUserId/*, errorHandler*/);
+  .get(authenticateToken, getDisagreementsByUserId);
 
 disagreementRouter
   .route('/:id')
-  .get(authenticateToken, getDisagreementById/*, errorHandler*/)
+  .get(authenticateToken, getDisagreementById)
   .put(
     authenticateToken,
     body('user_id').isInt(),
     body('notes').trim().escape().isString().optional({ nullable: true }),
     validationErrorHandler,
-    putDisagreement,
-    /*errorHandler*/
+    putDisagreement
   )
-  .delete(authenticateToken, deleteDisagreement/*, errorHandler*/);
+  .delete(authenticateToken, deleteDisagreement);
 
 export default disagreementRouter;
