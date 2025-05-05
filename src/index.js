@@ -12,8 +12,8 @@ import { fileURLToPath } from 'url';
 
 import { errorHandler, notFoundHandler } from './middlewares/error-handler.js';
 
-const port = process.env.PORT || 3000;
-const hostname = '0.0.0.0';
+const hostname = '127.0.0.1';
+const port = 3000;
 const app = express();
 
 app.use(cors());
