@@ -3,15 +3,16 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calendar for diary entries">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <title>Renovo App</title>
-    <script type="module" crossorigin src="./assets/calendar-CnZZ2YhM.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
-    <link rel="modulepreload" crossorigin href="./assets/main-DGSle_11.js">
-    <link rel="modulepreload" crossorigin href="./assets/fetch-DBomrZ5j.js">
-    <link rel="stylesheet" crossorigin href="./assets/main-BiGGV29z.css">
-    <link rel="stylesheet" crossorigin href="./assets/calendar-CILCnPrO.css">
+    <script type="module" crossorigin src="./assets/calendar-CBz_IhS2.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/fetch-CZzGIe3w.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-C1mOldaD.js">
+    <link rel="modulepreload" crossorigin href="./assets/toast-D7kci-jR.js">
+    <link rel="stylesheet" crossorigin href="./assets/main-CypLqCYa.css">
+    <link rel="stylesheet" crossorigin href="./assets/calendar-BqDvicrk.css">
   </head>
   <body>
     <!-- Header -->
@@ -20,7 +21,9 @@
         <button class="back-button" onclick="window.location.href='https://www.terveystalo.com'">
           ↩ <span class="return-to-terveystalo">Takaisin</span> Terveystaloon
         </button>
-        <div class="logo">Renovo</div>
+        <div class="logo">
+          <img src="./img/Renovo_logo.png" alt="Logo" class="logo-image">
+        </div>
       </div>
       <div class="right-header">
         <span id="show-username-header"></span>
@@ -266,6 +269,17 @@
         </form>
       </div>
     </div>
+
+        <!-- Custom Confirm Modal -->
+        <div id="customConfirmModal" class="confirm-modal">
+          <div class="modal-content">
+            <p id="confirmMessage">Haluatko varmasti poistaa tämän?</p>
+            <div class="confirm-buttons">
+              <button id="confirmYes">Kyllä</button>
+              <button id="confirmNo">Peruuta</button>
+            </div>
+          </div>
+        </div>
 
     <!-- Footer -->
     <footer>Student Project@Renovo App 2025</footer>
