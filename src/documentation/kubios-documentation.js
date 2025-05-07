@@ -91,7 +91,7 @@
  */
 
  /**
- * @api {get} /kubios/:id Get the user's observation period status (30 days) and save Kubios data to database
+ * @api {get} /kubios/:id Get the user's observation period status (60 days) and save Kubios data to database
  * @apiName getUserData
  * @apiGroup Hrv
  * @apiPermission token

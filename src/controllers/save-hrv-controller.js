@@ -43,9 +43,9 @@ const getUserData = async (req, res, next) => {
       const date = print.slice(0, 11)
       console.log(date + ' menee funktiolle')
 
-      //Check if the profile has existed either 30 days or longer
-      if (inDays >= 30) {
-        //If the profile's lifespan is over/equal to 30 days
+      //Check if the profile has existed either 60 days or longer
+      if (inDays >= 60) {
+        //If the profile's lifespan is over/equal to 60 days
         try {
           const response = await fetch(
             baseUrl + `/result/self?from=${date}00%3A00%3A00%2B00%3A00`,
